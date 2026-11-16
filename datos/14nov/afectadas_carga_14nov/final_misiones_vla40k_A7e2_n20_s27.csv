@@ -1,0 +1,6 @@
+mision,color,orden_cubos,cubo_correcto,exito,etapa_fallo,nav1_ok,nav1_s,nav1_err_mm,acercar_ok,pick_ok,pick_intentos,pick_msg,pick_s,cubo_z_alzado,nav2_ok,nav2_s,nav2_err_mm,cubo_sujeto,place_ok,place_msg,place_s,cubo_err_plato_mm,total_s,afinar_err_mm
+0,azul,rojo-azul-verde,1,1,,1,20.7,142.3,1,1,1,ok,41.8,0.167,1,20.0,154.9,1,1,cubo colocado,15.3,48.8,132.3,46.5
+1,verde,verde-azul-rojo,1,1,,1,20.5,141.3,1,1,1,ok,41.8,0.174,1,20.5,167.4,1,1,cubo colocado,15.2,42.3,142.7,44.3
+2,rojo,rojo-azul-verde,,0,nav_recojo,0,52.2,982.3,,,,,,,,,,,,,,,52.2,
+3,verde,rojo-azul-verde,,0,recoger,1,15.8,143.1,1,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,134.1,
+4,rojo,verde-azul-rojo,,0,nav_recojo,0,184.5,1114.7,,,,,,,,,,,,,,,184.5,

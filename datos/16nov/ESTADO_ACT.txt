@@ -1,0 +1,6 @@
+2026-11-15 02:21:24 INICIO ajuste ACT (457 demostraciones, lote 32, 40000 pasos, bloque 50)
+2026-11-15 07:35:23 FIN ajuste ACT (código 0; 124 = tope de 7 h alcanzado; checkpoints en vla/entrenos/act_escena_40k/checkpoints)
+2026-11-15 17:48:30 INICIO evaluación ACT (40k pasos) en los bancos s900 (disposición de demostración) y s910 (disposición de misión)
+2026-11-15 19:00:45 ACT banco demo s900: 33/50 [SmolVLA 40k 36/50, experto 18 mm 44/50]
+2026-11-15 19:01:50 ACT banco misión s910: 27/50
+2026-11-15 19:01:50 FIN evaluación ACT

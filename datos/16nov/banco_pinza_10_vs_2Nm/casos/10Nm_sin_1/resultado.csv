@@ -1,0 +1,4 @@
+apriete,pinza_rad,quieto_giro_real_deg,quieto_desp_cm,prueba,giro_odom_deg,giro_real_deg,dif_deg,desp_m,cubo_z_final
+cerrar(0.0)_azul,0.265,12.6,3.0,giro,-137.5,-73.3,64.2,0.159,0.146
+cerrar(0.0)_azul,0.265,12.6,3.0,giro_avance,137.2,-24.4,-161.7,0.077,0.146
+cerrar(0.0)_azul,0.265,12.6,3.0,avance,0.0,-118.4,-118.4,0.26,0.146

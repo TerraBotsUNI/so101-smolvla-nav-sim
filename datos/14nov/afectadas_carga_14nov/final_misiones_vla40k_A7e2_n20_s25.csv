@@ -1,0 +1,21 @@
+mision,color,orden_cubos,cubo_correcto,exito,etapa_fallo,nav1_ok,nav1_s,nav1_err_mm,acercar_ok,pick_ok,pick_intentos,pick_msg,pick_s,cubo_z_alzado,nav2_ok,nav2_s,nav2_err_mm,cubo_sujeto,place_ok,place_msg,place_s,cubo_err_plato_mm,total_s,afinar_err_mm
+0,verde,verde-azul-rojo,1,1,,1,15.2,151.9,1,1,1,ok,41.8,0.176,1,20.5,150.2,1,1,cubo colocado,15.8,70.1,132.6,70.2
+1,verde,rojo-verde-azul,,0,recoger,1,21.2,137.9,1,0,2,no levantó el cubo,93.2,0.02,,,,,,,,,137.7,
+2,rojo,azul-rojo-verde,,0,nav_entrega,1,15.6,139.9,1,1,1,ok,41.8,0.171,0,304.0,165.7,1,,,,,379.3,
+3,verde,rojo-verde-azul,1,1,,1,20.7,153.1,1,1,2,ok,88.4,0.167,1,19.9,163.7,1,1,cubo colocado,15.2,56.0,178.9,55.4
+4,rojo,verde-rojo-azul,,0,recoger,1,15.5,149.3,1,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,132.3,
+5,azul,verde-rojo-azul,,0,recoger,1,15.2,143.6,1,0,2,no levantó el cubo,93.2,0.02,,,,,,,,,133.4,
+6,azul,rojo-verde-azul,,0,recoger,1,20.5,151.9,1,0,2,no levantó el cubo,93.2,0.02,,,,,,,,,138.8,
+7,rojo,rojo-verde-azul,1,1,,1,20.8,157.0,1,1,1,ok,41.8,0.175,1,20.5,150.4,1,1,cubo colocado,15.2,60.2,140.8,62.6
+8,azul,azul-rojo-verde,1,1,,1,15.4,152.1,1,1,1,ok,41.8,0.173,1,20.4,155.9,1,1,cubo colocado,15.2,46.2,135.7,49.8
+9,azul,verde-rojo-azul,,0,recoger,1,21.4,143.5,1,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,139.7,
+10,azul,rojo-verde-azul,,0,recoger,1,21.1,149.8,1,0,2,no levantó el cubo,93.2,0.02,,,,,,,,,139.2,
+11,verde,azul-rojo-verde,,0,recoger,1,15.7,146.1,1,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,134.0,
+12,azul,azul-verde-rojo,,0,recoger,1,14.4,2384.0,0,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,148.2,
+13,rojo,azul-verde-rojo,,0,recoger,1,20.4,150.2,1,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,139.9,
+14,azul,verde-azul-rojo,1,1,,1,15.4,153.4,1,1,1,ok,41.8,0.173,1,20.0,160.9,1,1,cubo colocado,15.1,80.6,120.0,84.8
+15,azul,verde-azul-rojo,1,1,,1,25.6,146.5,1,1,1,ok,41.8,0.171,1,20.2,168.6,1,1,cubo colocado,15.4,24.4,137.8,25.7
+16,rojo,verde-rojo-azul,1,1,,1,15.1,152.9,1,1,1,ok,41.9,0.171,1,20.1,177.5,1,1,cubo colocado,15.1,44.3,127.2,42.6
+17,verde,rojo-verde-azul,,0,recoger,1,20.6,148.0,1,0,2,no levantó el cubo,93.3,0.02,,,,,,,,,137.3,
+18,verde,rojo-azul-verde,,0,nav_recojo,0,126.4,986.1,,,,,,,,,,,,,,,126.4,
+19,verde,azul-verde-rojo,,0,nav_recojo,0,182.1,1052.5,,,,,,,,,,,,,,,182.1,

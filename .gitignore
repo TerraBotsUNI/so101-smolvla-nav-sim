@@ -1,0 +1,26 @@
+# Compilación de colcon
+build/
+install/
+log/
+# Python
+__pycache__/
+*.pyc
+.venv/
+env/
+# Videos y artefactos grandes (se publican aparte; ver MANIFIESTO.md)
+*.mp4
+*.avi
+*.mkv
+checkpoints/
+pretrained_model/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+demos/
+hf_cache/
+# Sistema / editores
+desktop.ini
+.DS_Store
+~$*
+*.tmp

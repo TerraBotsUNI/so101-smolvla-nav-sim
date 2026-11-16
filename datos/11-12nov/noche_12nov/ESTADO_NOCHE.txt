@@ -1,0 +1,20 @@
+2026-11-12 01:12:50 INICIO cadena nocturna: 250 episodios (semilla 404), 20000 pasos de ajuste, lote 32
+2026-11-12 01:12:50 PASO 1: grabando demostraciones en demos/crudas
+2026-11-12 01:12:50 PASO 1, tanda 1: faltan 245 episodios
+2026-11-12 01:21:27 noche.sh reemplazado por orquestador_noche.sh (la grabación en curso continúa)
+2026-11-12 01:21:29 ORQUESTADOR: 2 colectores en paralelo + entrenamiento temprano y definitivo + monitor de consumo
+2026-11-12 01:21:29 colector 86: tanda 1, faltan 200 episodios
+2026-11-12 01:35:59 colector 85: tanda 1, faltan 224 episodios
+2026-11-12 01:46:53 colector 85: tanda 2, faltan 216 episodios
+2026-11-12 01:57:22 colector 86: tanda 2, faltan 168 episodios
+2026-11-12 02:11:22 colector 85: tanda 3, faltan 196 episodios
+2026-11-12 08:58:29 colector 86: tanda 3, faltan 160 episodios
+2026-11-12 09:06:36 colector 86: tanda 4, faltan 156 episodios
+2026-11-12 09:12:29 colector 85: tanda 4, faltan 175 episodios
+2026-11-12 09:22:30 colector 86: tanda 5, faltan 141 episodios
+2026-11-12 09:22:53 colector 85: tanda 5, faltan 168 episodios
+2026-11-12 10:00:54 colector 85: tanda 6, faltan 128 episodios
+2026-11-12 10:19:30 TEMPRANO: 121 episodios exitosos -> conversión y ajuste de 8000 pasos
+2026-11-12 10:25:54 colector 85 terminado: 142 episodios en $PROYECTO/demos/crudas
+2026-11-12 11:39:34 TEMPRANO terminado (código 0)
+2026-11-12 13:58:49 DETENIDO a mano: colector B colgado desde 09:53 (Gazebo congelado); el entrenamiento definitivo no aporta (mismos 121 episodios del temprano)

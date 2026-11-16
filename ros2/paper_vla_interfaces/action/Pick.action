@@ -1,0 +1,12 @@
+# Recoger el cubo con el SO-101 (experto clásico: percepción por cámara + cinemática inversa)
+string strategy      # ik_directa | multietapa | servovisual ('' = la del parámetro por defecto)
+string color         # rojo | verde | azul ('' = verde): el cubo que se pide
+bool hold            # true = queda sujetando el cubo (misión); false = suelta y vuelve a la pose de observación
+---
+bool success
+string message
+float32 cube_z       # altura final del cubo (verdad de terreno, solo para medir)
+float32 est_error_mm # error de la primera estimación de la cámara (solo para medir)
+float32 duration_s
+---
+string stage

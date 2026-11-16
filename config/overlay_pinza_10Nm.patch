@@ -1,0 +1,11 @@
+--- a/ros2/paper_vla_tb3so101/urdf/so101.urdf.xacro
++++ b/ros2/paper_vla_tb3so101/urdf/so101.urdf.xacro
+@@ -316,7 +316,7 @@
+     <parent link="gripper_link" />
+     <child link="moving_jaw_so101_v1_link" />
+     <axis xyz="0 0 1" />
+-    <limit effort="2.0" velocity="10" lower="-0.174533" upper="1.74533" />  <!-- 14-nov: 2 NÂ·m (antes 10, del URDF original). La pinza es de control por POSICIÃ“N y max_effort se ignora: con 10 NÂ·m la mordaza se hundÃ­a en el cubo y Gazebo generaba fuerzas espurias que hacÃ­an patinar al robot con cubo lateral (problema 31). 2 NÂ·m ~ servo real STS3215 -->
++    <limit effort="10" velocity="10" lower="-0.174533" upper="1.74533" />  <!-- 14-nov: 2 NÂ·m (antes 10, del URDF original). La pinza es de control por POSICIÃ“N y max_effort se ignora: con 10 NÂ·m la mordaza se hundÃ­a en el cubo y Gazebo generaba fuerzas espurias que hacÃ­an patinar al robot con cubo lateral (problema 31). 2 NÂ·m ~ servo real STS3215 -->
+   </joint>
+ 
+   

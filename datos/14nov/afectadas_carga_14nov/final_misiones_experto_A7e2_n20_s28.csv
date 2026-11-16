@@ -1,0 +1,6 @@
+mision,color,orden_cubos,cubo_correcto,exito,etapa_fallo,nav1_ok,nav1_s,nav1_err_mm,acercar_ok,pick_ok,pick_intentos,pick_msg,pick_s,cubo_z_alzado,nav2_ok,nav2_s,nav2_err_mm,cubo_sujeto,place_ok,place_msg,place_s,cubo_err_plato_mm,total_s,afinar_err_mm
+0,rojo,verde-rojo-azul,1,1,,1,26.4,157.5,1,1,1,ok,23.7,0.179,1,20.0,162.2,1,1,cubo colocado,15.0,41.2,121.3,40.7
+1,azul,verde-rojo-azul,1,1,,1,27.0,141.1,1,1,1,ok,26.5,0.179,1,19.4,166.1,1,1,cubo colocado,15.0,69.3,121.8,69.8
+2,rojo,azul-verde-rojo,1,1,,1,20.7,148.5,1,1,1,ok,28.8,0.179,1,19.5,168.8,1,1,cubo colocado,15.1,60.7,118.4,62.7
+3,verde,verde-azul-rojo,,0,nav_entrega,1,15.6,146.7,1,1,1,ok,24.3,0.178,0,304.0,164.8,1,,,,,370.2,
+4,rojo,azul-rojo-verde,,0,nav_recojo,0,304.0,1149.7,,,,,,,,,,,,,,,304.0,

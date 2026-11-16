@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!-- Parte de simulación para Gazebo Fortress: ros2_control (brazo+pinza), tracción diferencial,
+     LiDAR, cámara e IMU. Patrones tomados del Terranaitor v3, que ya funciona en Fortress. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="fortress_sim" params="prefix controllers_yaml max_speed lidar_samples lidar_min_angle lidar_max_angle lidar_range_min lidar_range_max lidar_rate">
+
+    <ros2_control name="SO101System" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+
+      <!-- Ruedas: solo lectura de estado (las mueve el plugin DiffDrive de Gazebo) -->
+      <joint name="${prefix}wheel_left_joint">
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+      <joint name="${prefix}wheel_right_joint">
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+
+      <joint name="${prefix}shoulder_pan">
+        <command_interface name="position"><param name="min">-1.91986</param><param name="max">1.91986</param></command_interface>
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+      <joint name="${prefix}shoulder_lift">
+        <command_interface name="position"><param name="min">-1.74533</param><param name="max">1.74533</param></command_interface>
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+      <joint name="${prefix}elbow_flex">
+        <command_interface name="position"><param name="min">-1.69</param><param name="max">1.69</param></command_interface>
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+      <joint name="${prefix}wrist_flex">
+        <command_interface name="position"><param name="min">-1.65806</param><param name="max">1.65806</param></command_interface>
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+      <joint name="${prefix}wrist_roll">
+        <command_interface name="position"><param name="min">-2.74385</param><param name="max">2.84121</param></command_interface>
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+      <joint name="${prefix}gripper">
+        <command_interface name="position"><param name="min">-0.174533</param><param name="max">1.74533</param></command_interface>
+        <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+        <state_interface name="velocity"><param name="initial_value">0.0</param></state_interface>
+      </joint>
+    </ros2_control>
+
+    <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>${controllers_yaml}</parameters>
+        <robot_param>robot_description</robot_param>
+        <robot_param_node>tb3_so101_rsp</robot_param_node>
+        <ros>
+          <remapping>~/robot_description:=/tb3_so101/robot_description</remapping>
+        </ros>
+      </plugin>
+
+      <!-- Tracción diferencial del Waffle Pi (rueda 0.066 m de diámetro, separación 0.287 m) -->
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>${prefix}wheel_left_joint</left_joint>
+        <right_joint>${prefix}wheel_right_joint</right_joint>
+        <wheel_separation>0.287</wheel_separation>
+        <wheel_radius>0.033</wheel_radius>
+        <topic>cmd_vel</topic>
+        <odom_topic>odom</odom_topic>
+        <tf_topic>tf</tf_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>${prefix}base_footprint</child_frame_id>
+        <odom_publish_frequency>50</odom_publish_frequency>
+        <max_linear_velocity>${max_speed}</max_linear_velocity>
+        <min_linear_velocity>${-max_speed}</min_linear_velocity>
+        <max_angular_velocity>1.82</max_angular_velocity>
+        <min_angular_velocity>-1.82</min_angular_velocity>
+      </plugin>
+
+    </gazebo>
+
+    <!-- LiDAR 2D. Por defecto con los parámetros del paper (30 m, 240°, 240 muestras, 20 Hz).
+         Para el LDS-01 original: samples=360, ángulos 0..6.28319, rango 0.12..3.5, 5 Hz. -->
+    <joint name="${prefix}lidar_sensor_joint" type="fixed">
+      <parent link="${prefix}base_scan"/><child link="${prefix}lidar_sensor_frame"/>
+      <origin xyz="0.07 0 0.06" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}lidar_sensor_frame"/>
+
+    <gazebo reference="${prefix}base_scan">
+      <sensor name="lidar" type="gpu_lidar">
+        <pose>0.07 0 0.06 0 0 0</pose>   <!-- 6 cm sobre el origen del eslabon: con z=0 los rayos nacen DENTRO de la malla del LiDAR y todo sale -inf -->
+        <topic>scan</topic>
+        <ignition_frame_id>${prefix}lidar_sensor_frame</ignition_frame_id>
+        <update_rate>${lidar_rate}</update_rate>
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>${lidar_samples}</samples>
+              <resolution>1</resolution>
+              <min_angle>${lidar_min_angle}</min_angle>
+              <max_angle>${lidar_max_angle}</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>${lidar_range_min}</min>
+            <max>${lidar_range_max}</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </lidar>
+      </sensor>
+    </gazebo>
+
+    <!-- Cámara RGB: 640x480 a 30 Hz, igual que la del Waffle Pi y que la del paper -->
+    <gazebo reference="${prefix}camera_rgb_frame">
+      <sensor name="pi_camera" type="camera">
+        <topic>camera/image_raw</topic>
+        <ignition_frame_id>${prefix}camera_rgb_frame</ignition_frame_id>
+        <update_rate>30</update_rate>
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>1.085595</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.03</near><far>100</far></clip>
+          <noise><type>gaussian</type><mean>0.0</mean><stddev>0.007</stddev></noise>
+        </camera>
+      </sensor>
+    </gazebo>
+
+    <!-- Cámara de MUÑECA: sobre gripper_link, inclinada ~29° hacia abajo para ver el espacio entre los dedos de la pinza.
+         (Eje óptico = +x del marco del sensor.) Visual: cuerpo de cámara gris + pletina hasta la pinza. -->
+    <joint name="${prefix}wrist_camera_joint" type="fixed">
+      <parent link="gripper_link"/><child link="${prefix}wrist_camera_link"/>
+      <origin xyz="0.00250 0.07344 0.00659" rpy="-0.00002 1.13319 -1.57082"/>
+    </joint>
+    <link name="${prefix}wrist_camera_link">
+      <visual><origin xyz="-0.004 0 0" rpy="0 0 0"/><geometry><box size="0.012 0.026 0.018"/></geometry><material name="camara_gris"><color rgba="0.12 0.12 0.12 1"/></material></visual>
+    </link>
+    <!-- Poste del soporte (solo visual). Una pletina "realista" hasta la pinza quedaba delante del lente (franja oscura en la imagen de muñeca):
+         se deja este poste, que no aparece en la imagen, en gris oscuro para que no llame la atención. -->
+    <joint name="${prefix}wrist_camera_post_joint" type="fixed">
+      <parent link="gripper_link"/><child link="${prefix}wrist_camera_post"/>
+      <origin xyz="0.0 0.03 -0.01" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}wrist_camera_post">
+      <visual><geometry><cylinder radius="0.004" length="0.05"/></geometry><material name="camara_gris"><color rgba="0.12 0.12 0.12 1"/></material></visual>
+    </link>
+    <gazebo reference="${prefix}wrist_camera_link">
+      <sensor name="wrist_camera" type="camera">
+        <topic>wrist_camera/image_raw</topic>
+        <pose>0.025 0 0 0 0 0</pose>   <!-- el sensor queda delante de su cubo marcador para no verlo por dentro -->
+        <ignition_frame_id>${prefix}wrist_camera_link</ignition_frame_id>
+        <update_rate>15</update_rate>
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>1.3</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.02</near><far>10</far></clip>
+          <noise><type>gaussian</type><mean>0.0</mean><stddev>0.007</stddev></noise>
+        </camera>
+      </sensor>
+    </gazebo>
+
+    <!-- Marcador visual de la cámara frontal (la del Waffle Pi): cubo + poste hacia la placa -->
+    <joint name="${prefix}front_camera_marker_joint" type="fixed">
+      <parent link="${prefix}camera_rgb_frame"/><child link="${prefix}front_camera_marker"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}front_camera_marker">
+      <visual><origin xyz="-0.006 0 0" rpy="0 0 0"/><geometry><box size="0.010 0.025 0.012"/></geometry><material name="camara_gris"><color rgba="0.12 0.12 0.12 1"/></material></visual>
+    </link>
+
+    <!-- v2 (12-nov-2026): MÁSTIL con cámara de ESCENA para el VLA. La cámara frontal del Waffle Pi (10 cm de altura, mirando al horizonte) no ve los
+         cubos que están a 14-18 cm delante en el suelo y el brazo la tapa al agarrar. Esta mira desde arriba y de lado la zona de agarre (16 cm delante):
+         ve los tres cubos, la pinza y su relación sin que el brazo la tape. Solo visual (sin colisión); el LiDAR no la ve (está a <0.20 m del sensor). -->
+    <joint name="${prefix}mast_joint" type="fixed">
+      <parent link="${prefix}base_link"/><child link="${prefix}mast_link"/>
+      <origin xyz="0.0 0.13 0.25" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}mast_link">
+      <visual><geometry><cylinder radius="0.008" length="0.32"/></geometry><material name="camara_gris"><color rgba="0.12 0.12 0.12 1"/></material></visual>
+      <!-- brazo corto en lo alto del mástil que lleva la cámara hacia el lado -->
+      <visual><origin xyz="0.025 0.035 0.16" rpy="1.5708 0 -0.95"/><geometry><cylinder radius="0.006" length="0.09"/></geometry><material name="camara_gris"><color rgba="0.12 0.12 0.12 1"/></material></visual>
+    </link>
+    <joint name="${prefix}scene_camera_joint" type="fixed">
+      <parent link="${prefix}base_link"/><child link="${prefix}scene_camera_link"/>
+      <origin xyz="0.05 0.2 0.41" rpy="0 1.052 -1.068"/>
+    </joint>
+    <link name="${prefix}scene_camera_link">
+      <visual><origin xyz="-0.012 0 0" rpy="0 0 0"/><geometry><box size="0.024 0.03 0.02"/></geometry><material name="camara_gris"><color rgba="0.12 0.12 0.12 1"/></material></visual>
+    </link>
+    <gazebo reference="${prefix}scene_camera_link">
+      <sensor name="scene_camera" type="camera">
+        <topic>scene_camera/image_raw</topic>
+        <pose>0.01 0 0 0 0 0</pose>
+        <ignition_frame_id>${prefix}scene_camera_link</ignition_frame_id>
+        <update_rate>15</update_rate>
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>1.2</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.03</near><far>20</far></clip>
+          <noise><type>gaussian</type><mean>0.0</mean><stddev>0.007</stddev></noise>
+        </camera>
+      </sensor>
+    </gazebo>
+
+    <gazebo reference="${prefix}imu_link">
+      <sensor name="imu" type="imu">
+        <topic>imu</topic>
+        <ignition_frame_id>${prefix}imu_link</ignition_frame_id>
+        <update_rate>100</update_rate>
+        <always_on>true</always_on>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

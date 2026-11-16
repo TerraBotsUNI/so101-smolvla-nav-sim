@@ -1,0 +1,7 @@
+# ¿Dónde está el cubo de este color? (cámara de muñeca, pose de observación)
+string color
+---
+bool success
+string message
+float64 x   # m, en base_footprint
+float64 y

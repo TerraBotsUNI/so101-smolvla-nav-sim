@@ -1,0 +1,10 @@
+2026-11-15 04:13:26 INICIO pasos 2-4: margen elegido 26 mm (criterio fijado antes del barrido; ver paso1_experto_m*_mision_s910.csv)
+2026-11-15 09:05:35 colector 88 terminado: 300 episodios en $PROYECTO/demos/crudas_v2_b
+2026-11-15 09:06:35 colector 87 terminado: 300 episodios en $PROYECTO/demos/crudas_v2_a
+2026-11-15 09:06:35 paso 2 terminado: 600 episodios, 590 exitosos
+2026-11-15 10:03:18 dataset v2: listo: 590 episodios, 108879 pasos -> $PROYECTO/demos/lerobot_v2_mision
+2026-11-15 14:36:40 ajuste v2 30k terminado (código 0)
+2026-11-15 16:42:06 banco misión s910: VLA v2 49/50, experto (margen 26) 48/50
+2026-11-15 16:43:06 banco demo s900: VLA v2 47/50, experto (margen 26) 49/50 [antes VLA 40k 36/50, experto 44/50]
+2026-11-15 17:47:31 banco misión s910: VLA 40k anterior 29/50
+2026-11-15 17:47:31 FIN pasos 2-4

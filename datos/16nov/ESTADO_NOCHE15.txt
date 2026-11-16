@@ -1,0 +1,10 @@
+2026-11-15 19:03:07 INICIO misiones finales: experto 26 mm y VLA v2, semillas 21-24, 2 simulaciones sin entrenamiento
+2026-11-15 20:31:54 experto 26 mm semilla 21: 16/20; avisos Nav2: 34
+2026-11-15 20:32:23 experto 26 mm semilla 23: 14/20; avisos Nav2: 56
+2026-11-15 22:01:37 experto 26 mm semilla 24: 16/20; avisos Nav2: 61
+2026-11-15 22:04:03 experto 26 mm semilla 22: 11/20; avisos Nav2: 120
+2026-11-15 23:48:42 VLA v2 semilla 21: 13/20; avisos Nav2: 120
+2026-11-15 23:59:01 VLA v2 semilla 23: 15/20; avisos Nav2: 76
+2026-11-16 01:30:40 VLA v2 semilla 22: 14/20; avisos Nav2: 80
+2026-11-16 01:45:03 VLA v2 semilla 24: 17/20; avisos Nav2: 47
+2026-11-16 01:45:03 FIN noche15

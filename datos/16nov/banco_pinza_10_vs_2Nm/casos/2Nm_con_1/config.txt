@@ -1,0 +1,3 @@
+prefijo: $PROYECTO/colcon/install/paper_vla_tb3so101
+pgid lanzamiento: 67556
+limite pinza en robot_description: <limit effort="2.0" lower="-0.174533" upper="1.74533" velocity="10"/>

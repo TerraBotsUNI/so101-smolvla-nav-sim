@@ -1,0 +1,3 @@
+prefijo: $PROYECTO/overlays/pinza_10Nm/install/paper_vla_tb3so101
+pgid lanzamiento: 91897
+limite pinza en robot_description: <limit effort="10" lower="-0.174533" upper="1.74533" velocity="10"/>

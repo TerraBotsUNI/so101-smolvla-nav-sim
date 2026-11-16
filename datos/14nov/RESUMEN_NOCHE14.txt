@@ -1,0 +1,28 @@
+RESUMEN 14-nov (A7e2 = pinza 2 N·m + acercamiento fino con AMCL en la entrega)
+
+  final_misiones_experto_A7e2_n20_s21.csv: 19/20
+  final_misiones_experto_A7e2_n20_s22.csv: 17/20
+  final_misiones_experto_A7e2_n20_s23.csv: 19/20
+  final_misiones_experto_A7e2_n20_s24.csv: 16/20
+  final_misiones_experto_A7e2_n20_s25.csv: 19/20
+  final_misiones_experto_A7e2_n20_s28.csv: 20/20
+  final_misiones_experto_A7e2_n20_s30.csv: 18/20
+  final_misiones_experto_A7e2_n20_s32.csv: 20/20
+MISIONES experto: 148/160 = 92 % (IC 95 % 87-96 %); fallos por etapa: {'nav_recojo': 4, 'recoger': 3, 'nav_entrega': 4, 'colocar': 1}
+
+  final_misiones_vla40k_A7e2_n20_s21.csv: 11/20
+  final_misiones_vla40k_A7e2_n20_s22.csv: 10/20
+  final_misiones_vla40k_A7e2_n20_s23.csv: 12/20
+  final_misiones_vla40k_A7e2_n20_s24.csv: 12/20
+MISIONES vla40k: 45/80 = 56 % (IC 95 % 45-67 %); fallos por etapa: {'recoger': 24, 'nav_recojo': 11}
+
+  final_misiones_vlapo40k_A7e2_n20_s21.csv: 11/20
+  final_misiones_vlapo40k_A7e2_n20_s22.csv: 12/20
+  final_misiones_vlapo40k_A7e2_n20_s23.csv: 13/20
+  final_misiones_vlapo40k_A7e2_n20_s24.csv: 12/20
+MISIONES vlapo40k: 48/80 = 60 % (IC 95 % 49-70 %); fallos por etapa: {'recoger': 25, 'nav_recojo': 6, 'nav_entrega': 1}
+
+BRAZO eval_brazo_A7e2_40k_n50_s900.csv: vla 36/50 (72 %), ik_directa 44/50 (88 %)
+BRAZO eval_brazo_A7e2_po40k_n50_s900.csv: vla 35/50 (70 %)
+
+Referencias previas: misiones experto antes de la corrección 3/20 (12-nov), A4 0/20; brazo con 10 N·m: VLA 40k 36/50 (72 %), experto 40/50 (80 %).

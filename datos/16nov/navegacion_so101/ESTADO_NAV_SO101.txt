@@ -1,0 +1,11 @@
+2026-11-16 00:56:18 comparación MPPI/DWB/RPP POSPUESTA para el 16-nov de día (a pedido del autor, para liberar la WS en la madrugada)
+2026-11-16 02:57:18 comparación MPPI/DWB/RPP RELANZADA a pedido del autor (WS libre)
+2026-11-16 02:57:18 INICIO comparación MPPI/DWB/RPP con el SO-101 (30 ensayos por controlador)
+2026-11-16 03:46:37 MPPI terminado: 29/30 llegaron
+2026-11-16 04:01:11 DWB terminado: 27/30 llegaron
+2026-11-16 04:36:04 RPP: 2 ensayos sin activación de Nav2 (21, 23); se lanzan los de reposición 31-32 en el dominio 87
+2026-11-16 04:39:13 reposición RPP 31-32 terminada
+2026-11-16 04:46:25 RPP: ensayo 24 sin activación de Nav2; se lanza la reposición 33 en el dominio 87
+2026-11-16 04:48:12 reposición RPP 33 terminada
+2026-11-16 04:52:48 RPP terminado: 29/30 llegaron
+2026-11-16 04:52:48 FIN comparación MPPI/DWB/RPP

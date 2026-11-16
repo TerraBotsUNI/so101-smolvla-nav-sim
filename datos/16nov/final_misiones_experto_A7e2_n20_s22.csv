@@ -1,0 +1,21 @@
+mision,color,orden_cubos,cubo_correcto,exito,etapa_fallo,nav1_ok,nav1_s,nav1_err_mm,acercar_ok,pick_ok,pick_intentos,pick_msg,pick_s,cubo_z_alzado,nav2_ok,nav2_s,nav2_err_mm,cubo_sujeto,place_ok,place_msg,place_s,cubo_err_plato_mm,total_s,afinar_err_mm
+0,rojo,verde-azul-rojo,1,1,,1,20.6,157.0,1,1,1,ok,26.9,0.176,1,19.9,165.9,1,1,cubo colocado,14.9,57.7,116.4,59.7
+1,azul,azul-rojo-verde,1,1,,1,21.1,153.2,1,1,1,ok,24.0,0.178,1,20.7,156.0,1,1,cubo colocado,15.3,71.3,119.6,66.2
+2,azul,azul-verde-rojo,1,1,,1,15.9,145.9,1,1,1,ok,23.7,0.177,1,20.7,152.9,1,1,cubo colocado,15.0,84.8,111.0,79.4
+3,rojo,azul-verde-rojo,1,1,,1,20.6,152.4,1,1,1,ok,26.8,0.179,1,19.4,168.8,1,1,cubo colocado,14.9,49.8,115.9,51.8
+4,rojo,azul-rojo-verde,,0,recoger,1,32.9,156.5,0,0,2,no detectado desde observación,11.7,0.0,,,,,,,,,85.1,
+5,azul,rojo-verde-azul,1,1,,1,21.1,138.4,1,1,1,ok,27.1,0.179,1,19.5,161.0,1,1,cubo colocado,15.1,37.7,120.0,39.0
+6,azul,verde-azul-rojo,1,1,,1,15.3,133.3,1,1,1,ok,23.7,0.18,1,20.3,159.4,1,1,cubo colocado,15.3,67.3,112.2,66.2
+7,azul,rojo-azul-verde,1,1,,1,20.9,141.9,1,1,1,ok,23.7,0.181,1,20.3,157.3,1,1,cubo colocado,15.2,81.1,107.0,86.4
+8,verde,verde-azul-rojo,1,1,,1,26.8,160.1,1,1,1,ok,23.7,0.178,1,20.6,159.8,1,1,cubo colocado,15.3,19.8,133.2,17.2
+9,rojo,verde-rojo-azul,1,1,,1,21.3,143.8,1,1,1,ok,23.8,0.181,1,20.2,158.1,1,1,cubo colocado,15.4,63.1,114.9,64.2
+10,azul,rojo-azul-verde,1,1,,1,16.0,148.2,1,1,1,ok,23.8,0.18,1,19.9,157.5,1,1,cubo colocado,15.2,46.1,108.1,44.3
+11,verde,azul-verde-rojo,1,1,,1,15.5,159.7,1,1,1,ok,23.6,0.179,1,19.7,166.1,1,1,cubo colocado,15.1,21.8,113.4,22.8
+12,verde,verde-rojo-azul,,0,nav_entrega,1,20.7,143.3,1,1,1,ok,23.6,0.178,0,304.0,174.4,1,,,,,374.5,
+13,verde,azul-rojo-verde,1,1,,1,20.3,154.6,1,1,1,ok,26.5,0.179,1,19.2,169.5,1,1,cubo colocado,14.9,30.2,119.7,30.8
+14,verde,azul-verde-rojo,1,1,,1,15.5,153.9,1,1,1,ok,23.8,0.179,1,20.1,154.1,1,1,cubo colocado,15.2,16.2,111.8,17.3
+15,azul,azul-verde-rojo,1,1,,1,15.6,151.7,1,1,1,ok,23.6,0.179,1,20.9,166.1,1,1,cubo colocado,15.1,60.0,115.5,54.5
+16,verde,rojo-verde-azul,1,1,,1,20.7,136.2,1,1,1,ok,23.8,0.179,1,19.8,174.8,1,1,cubo colocado,15.1,31.0,113.0,32.6
+17,azul,rojo-azul-verde,1,1,,1,20.9,149.7,1,1,1,ok,23.7,0.18,1,20.3,163.1,1,1,cubo colocado,15.0,81.3,107.6,81.3
+18,azul,azul-verde-rojo,,0,nav_recojo,0,47.3,1179.2,,,,,,,,,,,,,,,47.3,
+19,azul,rojo-azul-verde,1,1,,1,15.2,132.9,1,1,1,ok,23.0,0.181,1,19.8,164.9,1,1,cubo colocado,15.2,66.9,104.2,65.6

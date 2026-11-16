@@ -1,0 +1,5 @@
+vecinos: NO (alejados a ~18 m)
+apriete cerrar(0.0)_azul: pinza 0.496 -> 0.496 rad; QUIETO 8 s: giro real +0.0°, desplazamiento 0.0 cm; cubo z 0.179
+    giro        : odometría -137.5°  real -136.9°  diferencia  +0.6°  cubo z 0.179
+    giro_avance : odometría +137.7°  real +131.1°  diferencia  -6.5°  cubo z 0.178
+    avance      : odometría   +0.0°  real   -1.1°  diferencia  -1.1°  cubo z 0.178

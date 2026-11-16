@@ -1,0 +1,8 @@
+Tandas de misiones del 14-nov que corrieron (total o parcialmente) con la VM a 40 vCPU y 3-4 simulaciones a la vez (desde 09:56).
+EXCLUIDAS del anÃ¡lisis: Nav2 sin CPU suficiente. Registros de Nav2: "Control loop missed its desired rate of 20.0000Hz" (hasta 261 por
+simulaciÃ³n), "Optimizer fail" (MPPI), "Collision Ahead"; carga 45-72, 50 % de CPU en el kernel, 313 000 cambios de contexto/s.
+Efecto: los fallos de navegaciÃ³n al recojo se duplicaron (VLA s28: 10 de 14). Criterio fijado por tiempo (no por resultado):
+experto s26-s29 y VLA 40k s25-s28. VÃ¡lidas: experto s21-s25 y VLA 40k s21-s24 (32 vCPU, 3 simulaciones, sin esos avisos).
+AÃ±adidas a las 14:40: experto s26 (13/20) y s27 (parcial 15/17), corridas con 2 simulaciones A LA VEZ QUE EL AJUSTE de SmolVLA
+(el cargador de datos usa ~6 nÃºcleos): 99 avisos Â«missed its desired rateÂ» en el dominio 87 y 5 fallos nav_recojo en s26. Mismo
+criterio de carga. Desde las 14:40, durante el ajuste solo corre 1 simulaciÃ³n.

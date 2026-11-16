@@ -1,0 +1,5 @@
+# Ubicaciones de la misión: [x, y, yaw] en el marco map (= marco del mundo de Gazebo). Se pueden regrabar con guardar_ubicacion.py.
+# El cubo está 0.16 m delante de `recojo` y el plato 0.16 m delante de `entrega` (ver so101_mision.py y config/arena.yaml).
+inicio: [0.0, 0.0, 0.0]
+recojo: [2.0, 1.5, 0.0]
+entrega: [2.0, -1.5, 0.0]

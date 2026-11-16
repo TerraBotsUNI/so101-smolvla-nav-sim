@@ -1,0 +1,3 @@
+mision,exito,etapa_fallo,nav1_ok,nav1_s,nav1_err_mm,acercar_ok,pick_ok,pick_intentos,pick_msg,pick_s,cubo_z_alzado,nav2_ok,nav2_s,nav2_err_mm,cubo_sujeto,place_ok,place_msg,place_s,cubo_err_plato_mm,total_s
+0,1,,1,13.6,100.5,1,1,1,ok,30.6,0.165,1,16.6,125.8,1,1,cubo colocado,19.5,86.4,95.0
+1,1,,1,18.9,106.1,1,1,1,ok,26.9,0.166,1,17.0,109.0,1,1,cubo colocado,19.2,71.8,97.0

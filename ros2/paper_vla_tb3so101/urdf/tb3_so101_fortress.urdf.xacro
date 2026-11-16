@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- TurtleBot3 Waffle Pi + SO-101 para Gazebo FORTRESS (versión 2 del paper). Reutiliza el Waffle Pi de ROBOTIS y el URDF oficial del SO-101. -->
+<robot name="tb3_so101" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="controllers_yaml" default="/tmp/controllers.yaml"/>
+  <xacro:arg name="max_speed" default="0.26"/>
+  <xacro:arg name="lidar_samples" default="240"/>
+  <xacro:arg name="lidar_min_angle" default="-2.0944"/>
+  <xacro:arg name="lidar_max_angle" default="2.0944"/>
+  <xacro:arg name="lidar_range_min" default="0.20"/>   <!-- v2: el brazo pasa a 5-12 cm del LiDAR al agarrar; por debajo de 20 cm no se ve nada (LDS-01 real: 0.12) -->
+  <xacro:arg name="lidar_range_max" default="30.0"/>
+  <xacro:arg name="lidar_rate" default="20"/>
+
+  <xacro:include filename="$(find paper_vla_tb3so101)/urdf/colores.xacro"/>
+  <xacro:include filename="$(find turtlebot3_manipulation_description)/urdf/turtlebot3_waffle_pi.urdf.xacro"/>
+  <xacro:include filename="$(find paper_vla_tb3so101)/urdf/so101.urdf.xacro"/>
+  <xacro:include filename="$(find paper_vla_tb3so101)/urdf/fortress_sim.xacro"/>
+
+  <xacro:turtlebot3_waffle_pi prefix="$(arg prefix)"/>
+
+  <!-- Fijación del SO-101 sobre la placa superior del Waffle Pi (detrás del LiDAR, que está en x=-0.024) -->
+  <joint name="so101_mount" type="fixed">
+    <parent link="$(arg prefix)base_link"/>
+    <child link="so101_base_link"/>
+    <origin xyz="-0.15 0.0 0.091" rpy="0 0 0"/>
+  </joint>
+  <xacro:so101/>
+
+  <!-- v2: rueda loca delantera (rozamiento como las traseras). El Waffle Pi solo apoya en las ruedas (x=0) y en las ruedas locas traseras (x=-0.177): con el brazo adelantado
+       el centro de masa pasa por delante del eje y el robot cabecea 8.6 grados; entonces el LiDAR toca el suelo a ~1.3 m (obstáculos fantasma) y AMCL se pierde. -->
+  <joint name="caster_front_joint" type="fixed">
+    <parent link="$(arg prefix)base_link"/>
+    <child link="caster_front_link"/>
+    <origin xyz="0.055 0 -0.005" rpy="0 0 0"/>
+  </joint>
+  <link name="caster_front_link">
+    <collision><geometry><sphere radius="0.005"/></geometry></collision>
+    <inertial><mass value="0.005"/><inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/></inertial>
+  </link>
+  <!-- mismo contacto que las ruedas locas traseras del Waffle Pi. Con mu=0 el robot derivaba solo (10 grados/s) al sujetar el cubo -->
+  <gazebo reference="caster_front_link"><mu1>0.1</mu1><mu2>0.1</mu2><kp>1000000.0</kp><kd>100.0</kd></gazebo>
+
+  <xacro:fortress_sim prefix="$(arg prefix)" controllers_yaml="$(arg controllers_yaml)"
+      max_speed="$(arg max_speed)" lidar_samples="$(arg lidar_samples)"
+      lidar_min_angle="$(arg lidar_min_angle)" lidar_max_angle="$(arg lidar_max_angle)"
+      lidar_range_min="$(arg lidar_range_min)" lidar_range_max="$(arg lidar_range_max)"
+      lidar_rate="$(arg lidar_rate)"/>
+</robot>

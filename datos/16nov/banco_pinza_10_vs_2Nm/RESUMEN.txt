@@ -1,0 +1,51 @@
+BANCO DE SUJECIÓN EN VIDEO (16-nov-2026): pinza del SO-101 a 10 N·m (URDF original) frente a 2 N·m (actual)
+Cubo agarrado: AZUL (lateral derecho, -13 cm). "con vecinos": cubo verde (centro) y rojo (+13 cm) en el suelo junto al azul;
+"sin vecinos": verde y rojo alejados a ~18 m. Simulación nueva por caso (cinematica.launch.py, sin Nav2), dominio 87.
+Protocolo (prueba_sujecion_video.py, igual que tools/prueba_sujecion.py): Pick ik_directa con hold -> pinza cerrada (orden 0.0);
+asentar 2 s y QUIETO 8 s (s de reloj; ~5.6 s de simulación) -> giro wz=-0.6 4 s -> giro+avance wz=+0.6 vx=0.12 4 s -> avance vx=0.15 4 s.
+Error = giro real (Gazebo, /gt_tf) - giro de odometría (lo que ordenó y "cree" el robot). Ideal: 0°.
+"deriva sin orden" = giro real desde que la pinza termina de cerrar hasta el final de QUIETO (robot sin ninguna orden de velocidad).
+
+caso             pinza rad  quieto 8s  deriva s/orden  err giro  err giro+av  err avance  cubo z fin
+----------------------------------------------------------------------------------------------------
+10Nm_con_1           0.270      +5.4°    +22.5° en  11s    -15.3°      -133.3°       -4.6°     14.7 cm
+10Nm_con_2           0.284      -0.0°     +0.8° en  11s    +67.4°      -160.6°       -8.8°     14.8 cm
+10Nm_sin_1           0.265     +12.6°    +24.7° en  11s    +64.2°      -161.7°     -118.4°     14.6 cm
+10Nm_sin_2           0.238      -1.0°     -2.0° en  11s     +0.5°        -0.5°       -0.0°      2.0 cm
+10Nm_sin_3           0.307      -0.5°     -3.2° en  11s     +2.8°      -176.5°       +2.7°     15.5 cm
+2Nm_con_1            0.496      +0.0°     +0.0° en  12s     +0.6°        -6.7°       -0.9°     17.8 cm
+2Nm_sin_1            0.496      +0.0°     +0.0° en  12s     +0.6°        -6.5°       -1.1°     17.8 cm
+
+Detalle (odometría -> real) por caso:
+  10Nm_con_1: limite pinza en robot_description: <limit effort="10" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.5°  real  -152.8°  desplazamiento 0.043 m
+      giro_avance  odometría  +137.5°  real    +4.2°  desplazamiento 0.145 m
+      avance       odometría    +0.0°  real    -4.6°  desplazamiento 0.585 m
+  10Nm_con_2: limite pinza en robot_description: <limit effort="10" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.5°  real   -70.1°  desplazamiento 0.157 m
+      giro_avance  odometría  +137.5°  real   -23.1°  desplazamiento 0.080 m
+      avance       odometría    +0.0°  real    -8.8°  desplazamiento 0.565 m
+  10Nm_sin_1: limite pinza en robot_description: <limit effort="10" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.5°  real   -73.3°  desplazamiento 0.159 m
+      giro_avance  odometría  +137.2°  real   -24.4°  desplazamiento 0.077 m
+      avance       odometría    +0.0°  real  -118.4°  desplazamiento 0.260 m
+  10Nm_sin_2: limite pinza en robot_description: <limit effort="10" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.6°  real  -137.1°  desplazamiento 0.017 m
+      giro_avance  odometría  +137.5°  real  +137.1°  desplazamiento 0.357 m
+      avance       odometría    -0.0°  real    -0.0°  desplazamiento 0.600 m
+  10Nm_sin_3: limite pinza en robot_description: <limit effort="10" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.5°  real  -134.8°  desplazamiento 0.051 m
+      giro_avance  odometría  +137.5°  real   -39.0°  desplazamiento 0.044 m
+      avance       odometría    +0.0°  real    +2.7°  desplazamiento 0.594 m
+  2Nm_con_1: limite pinza en robot_description: <limit effort="2.0" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.6°  real  -137.1°  desplazamiento 0.017 m
+      giro_avance  odometría  +137.4°  real  +130.7°  desplazamiento 0.352 m
+      avance       odometría    +0.0°  real    -0.9°  desplazamiento 0.591 m
+  2Nm_sin_1: limite pinza en robot_description: <limit effort="2.0" lower="-0.174533" upper="1.74533" velocity="10"/>
+      giro         odometría  -137.5°  real  -136.9°  desplazamiento 0.017 m
+      giro_avance  odometría  +137.7°  real  +131.1°  desplazamiento 0.352 m
+      avance       odometría    +0.0°  real    -1.1°  desplazamiento 0.592 m
+
+10Nm_sin_2: el agarre se dio por bueno pero el cubo se escurrió de la pinza durante la subida (z fin 2 cm); sin cubo sujeto el robot gira
+  bien (errores < 1°). No cuenta como prueba de sujeción: se repitió como 10Nm_sin_3.
+Cubo z fin: altura del cubo azul al terminar el avance (14-15 cm = sigue en la pinza; 2 cm = en el suelo).

@@ -1,0 +1,91 @@
+2026-11-16 02:58:03 ensayo 1 nav2_activo=1 carga=7.18
+{"controller": "mppi", "run": "1", "status": "SUCCEEDED", "success": true, "time_sim_s": 16.67, "time_wall_s": 25.77, "path_length_m": 2.594, "final_error_m": 0.188, "clearance_min_m": 0.097, "collision": false, "recoveries": 6, "pose_source": "gazebo", "t_first_motion_s": 0.65, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 2
+2026-11-16 02:59:42 ensayo 2 nav2_activo=1 carga=20.25
+{"controller": "mppi", "run": "2", "status": "ABORTED", "success": false, "time_sim_s": 82.03, "time_wall_s": 141.62, "path_length_m": 1.635, "final_error_m": 1.162, "clearance_min_m": 0.092, "collision": false, "recoveries": 19, "pose_source": "gazebo", "t_first_motion_s": 0.62, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 5
+2026-11-16 03:03:16 ensayo 3 nav2_activo=1 carga=20.87
+{"controller": "mppi", "run": "3", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.77, "time_wall_s": 20.63, "path_length_m": 2.614, "final_error_m": 0.17, "clearance_min_m": 0.106, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.57, "cmd_vx_mean_10s": 0.
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:04:52 ensayo 4 nav2_activo=1 carga=16.21
+{"controller": "mppi", "run": "4", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.72, "time_wall_s": 18.78, "path_length_m": 2.605, "final_error_m": 0.18, "clearance_min_m": 0.111, "collision": false, "recoveries": 0, "pose_source": "gazebo", "t_first_motion_s": 0.65, "cmd_vx_mean_10s": 0.
+  avisos MPPI/controlador 'missed rate': 0
+2026-11-16 03:06:39 ensayo 5 nav2_activo=1 carga=19.37
+{"controller": "mppi", "run": "5", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.5, "time_wall_s": 20.81, "path_length_m": 2.6, "final_error_m": 0.177, "clearance_min_m": 0.097, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 1.1, "cmd_vx_mean_10s": 0.241
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:08:11 ensayo 6 nav2_activo=1 carga=22.81
+{"controller": "mppi", "run": "6", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.23, "time_wall_s": 19.64, "path_length_m": 2.602, "final_error_m": 0.176, "clearance_min_m": 0.101, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.58, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:09:41 ensayo 7 nav2_activo=1 carga=18.70
+{"controller": "mppi", "run": "7", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.04, "time_wall_s": 19.39, "path_length_m": 2.609, "final_error_m": 0.181, "clearance_min_m": 0.108, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.68, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:11:11 ensayo 8 nav2_activo=1 carga=21.60
+{"controller": "mppi", "run": "8", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.78, "time_wall_s": 18.69, "path_length_m": 2.602, "final_error_m": 0.177, "clearance_min_m": 0.101, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.65, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:13:02 ensayo 9 nav2_activo=1 carga=20.55
+{"controller": "mppi", "run": "9", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.03, "time_wall_s": 17.71, "path_length_m": 2.605, "final_error_m": 0.174, "clearance_min_m": 0.104, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.69, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 3
+2026-11-16 03:14:30 ensayo 10 nav2_activo=1 carga=22.09
+{"controller": "mppi", "run": "10", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.68, "time_wall_s": 16.86, "path_length_m": 2.618, "final_error_m": 0.167, "clearance_min_m": 0.104, "collision": false, "recoveries": 0, "pose_source": "gazebo", "t_first_motion_s": 0.6, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 0
+2026-11-16 03:16:00 ensayo 11 nav2_activo=1 carga=24.20
+{"controller": "mppi", "run": "11", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.95, "time_wall_s": 20.87, "path_length_m": 2.588, "final_error_m": 0.186, "clearance_min_m": 0.105, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.64, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:17:51 ensayo 12 nav2_activo=1 carga=19.82
+{"controller": "mppi", "run": "12", "status": "SUCCEEDED", "success": true, "time_sim_s": 16.72, "time_wall_s": 28.1, "path_length_m": 2.596, "final_error_m": 0.18, "clearance_min_m": 0.1, "collision": false, "recoveries": 6, "pose_source": "gazebo", "t_first_motion_s": 0.64, "cmd_vx_mean_10s": 0.22
+  avisos MPPI/controlador 'missed rate': 2
+2026-11-16 03:19:30 ensayo 13 nav2_activo=1 carga=21.81
+{"controller": "mppi", "run": "13", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.83, "time_wall_s": 17.86, "path_length_m": 2.598, "final_error_m": 0.179, "clearance_min_m": 0.104, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.61, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:21:01 ensayo 14 nav2_activo=1 carga=21.47
+{"controller": "mppi", "run": "14", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.68, "time_wall_s": 16.68, "path_length_m": 2.603, "final_error_m": 0.174, "clearance_min_m": 0.102, "collision": false, "recoveries": 0, "pose_source": "gazebo", "t_first_motion_s": 0.61, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 0
+2026-11-16 03:22:31 ensayo 15 nav2_activo=1 carga=20.05
+{"controller": "mppi", "run": "15", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.39, "time_wall_s": 18.52, "path_length_m": 2.612, "final_error_m": 0.164, "clearance_min_m": 0.103, "collision": false, "recoveries": 4, "pose_source": "gazebo", "t_first_motion_s": 0.62, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:24:01 ensayo 16 nav2_activo=1 carga=23.87
+{"controller": "mppi", "run": "16", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.01, "time_wall_s": 19.06, "path_length_m": 2.595, "final_error_m": 0.184, "clearance_min_m": 0.104, "collision": false, "recoveries": 4, "pose_source": "gazebo", "t_first_motion_s": 0.6, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 2
+2026-11-16 03:25:19 ensayo 17 nav2_activo=1 carga=19.89
+{"controller": "mppi", "run": "17", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.14, "time_wall_s": 19.46, "path_length_m": 2.601, "final_error_m": 0.175, "clearance_min_m": 0.101, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.65, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:26:49 ensayo 18 nav2_activo=1 carga=23.04
+{"controller": "mppi", "run": "18", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.84, "time_wall_s": 19.08, "path_length_m": 2.602, "final_error_m": 0.179, "clearance_min_m": 0.105, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.65, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:28:16 ensayo 19 nav2_activo=1 carga=21.95
+{"controller": "mppi", "run": "19", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.69, "time_wall_s": 20.2, "path_length_m": 2.605, "final_error_m": 0.173, "clearance_min_m": 0.106, "collision": false, "recoveries": 0, "pose_source": "gazebo", "t_first_motion_s": 0.56, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 0
+2026-11-16 03:30:07 ensayo 20 nav2_activo=1 carga=21.50
+{"controller": "mppi", "run": "20", "status": "SUCCEEDED", "success": true, "time_sim_s": 16.53, "time_wall_s": 30.8, "path_length_m": 2.622, "final_error_m": 0.165, "clearance_min_m": 0.102, "collision": false, "recoveries": 6, "pose_source": "gazebo", "t_first_motion_s": 0.57, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:31:53 ensayo 21 nav2_activo=1 carga=19.47
+{"controller": "mppi", "run": "21", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.21, "time_wall_s": 20.36, "path_length_m": 2.606, "final_error_m": 0.177, "clearance_min_m": 0.107, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.61, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:33:26 ensayo 22 nav2_activo=1 carga=19.82
+{"controller": "mppi", "run": "22", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.03, "time_wall_s": 20.75, "path_length_m": 2.591, "final_error_m": 0.178, "clearance_min_m": 0.101, "collision": false, "recoveries": 4, "pose_source": "gazebo", "t_first_motion_s": 0.63, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:35:15 ensayo 23 nav2_activo=1 carga=25.35
+{"controller": "mppi", "run": "23", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.8, "time_wall_s": 18.69, "path_length_m": 2.602, "final_error_m": 0.171, "clearance_min_m": 0.103, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.64, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:36:46 ensayo 24 nav2_activo=1 carga=20.21
+{"controller": "mppi", "run": "24", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.75, "time_wall_s": 18.02, "path_length_m": 2.597, "final_error_m": 0.185, "clearance_min_m": 0.105, "collision": false, "recoveries": 1, "pose_source": "gazebo", "t_first_motion_s": 0.63, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:38:15 ensayo 25 nav2_activo=1 carga=22.33
+{"controller": "mppi", "run": "25", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.34, "time_wall_s": 19.53, "path_length_m": 2.602, "final_error_m": 0.173, "clearance_min_m": 0.103, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.66, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:40:02 ensayo 26 nav2_activo=1 carga=25.82
+{"controller": "mppi", "run": "26", "status": "SUCCEEDED", "success": true, "time_sim_s": 16.23, "time_wall_s": 23.99, "path_length_m": 2.598, "final_error_m": 0.172, "clearance_min_m": 0.098, "collision": false, "recoveries": 6, "pose_source": "gazebo", "t_first_motion_s": 0.6, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 3
+2026-11-16 03:41:38 ensayo 27 nav2_activo=1 carga=24.63
+{"controller": "mppi", "run": "27", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.0, "time_wall_s": 16.05, "path_length_m": 2.606, "final_error_m": 0.173, "clearance_min_m": 0.099, "collision": false, "recoveries": 4, "pose_source": "gazebo", "t_first_motion_s": 0.63, "cmd_vx_mean_10s": 0
+  avisos MPPI/controlador 'missed rate': 4
+2026-11-16 03:43:05 ensayo 28 nav2_activo=1 carga=18.30
+{"controller": "mppi", "run": "28", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.04, "time_wall_s": 16.63, "path_length_m": 2.601, "final_error_m": 0.175, "clearance_min_m": 0.104, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.61, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:44:31 ensayo 29 nav2_activo=1 carga=22.12
+{"controller": "mppi", "run": "29", "status": "SUCCEEDED", "success": true, "time_sim_s": 11.3, "time_wall_s": 16.94, "path_length_m": 2.592, "final_error_m": 0.18, "clearance_min_m": 0.097, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.65, "cmd_vx_mean_10s": 0.
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:45:56 ensayo 30 nav2_activo=1 carga=22.32
+{"controller": "mppi", "run": "30", "status": "SUCCEEDED", "success": true, "time_sim_s": 10.87, "time_wall_s": 17.36, "path_length_m": 2.595, "final_error_m": 0.183, "clearance_min_m": 0.102, "collision": false, "recoveries": 3, "pose_source": "gazebo", "t_first_motion_s": 0.62, "cmd_vx_mean_10s": 
+  avisos MPPI/controlador 'missed rate': 1
+2026-11-16 03:46:37 FIN mppi

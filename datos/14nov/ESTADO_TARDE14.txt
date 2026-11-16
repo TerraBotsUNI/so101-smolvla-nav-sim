@@ -1,0 +1,16 @@
+2026-11-14 12:56:55 INICIO tarde14: VM 40 vCPU; mÃ¡x. 2 simulaciones; dataset pinza-orden -> ajuste 40k; experto en 2 simulaciones mientras tanto
+2026-11-14 13:57:04 dataset pinza-orden: listo: 457 episodios, 85707 pasos -> $PROYECTO/demos/lerobot_escena_pinzaorden
+2026-11-14 14:16:08 ajuste con nice 19 (cargador de datos ~6 nÃºcleos subÃ­a los avisos de Nav2 del dom 87 de 27 a 66 y dio 2 fallos nav_recojo en experto s26, misiones 12 y 16)
+2026-11-14 14:30:42 experto (A7e2) semilla 26: 13/20; avisos Nav2 'missed rate' (Ãºltimo tramo): 99
+2026-11-14 14:33:07 rama S2 detenida (2 simulaciones + ajuste = 99 avisos Nav2); experto s26/s27 a afectadas_carga_14nov; durante el ajuste solo S1 (dom 87); tarde14_s2.sh lanzarÃ¡ VLA pinza-orden s21-s22 en dom 88 al terminar el ajuste
+2026-11-14 15:56:30 experto (A7e2) semilla 28: 20/20; avisos Nav2 'missed rate' (Ãºltimo tramo): 35
+2026-11-14 17:31:12 experto (A7e2) semilla 30: 18/20; avisos Nav2 'missed rate' (Ãºltimo tramo): 45
+2026-11-14 18:58:59 experto (A7e2) semilla 32: 20/20; avisos Nav2 'missed rate' (Ãºltimo tramo): 38
+2026-11-14 19:58:26 ajuste 40k pinza-orden terminado (cÃ³digo 0)
+2026-11-14 21:20:24 brazo VLA pinza-orden (50 escenas): 35/50 (antes VLA 40k 36/50, experto 44/50)
+2026-11-14 21:32:11 VLA pinza-orden 40k (A7e2) semilla 21: 11/20; avisos Nav2: 56
+2026-11-14 23:14:27 VLA pinza-orden 40k (A7e2) semilla 23: 13/20; avisos Nav2: 40
+2026-11-14 23:16:15 VLA pinza-orden 40k (A7e2) semilla 22: 12/20; avisos Nav2: 63
+2026-11-14 23:16:15 FIN rama S2 (tarde14_s2.sh)
+2026-11-15 00:28:50 VLA pinza-orden 40k (A7e2) semilla 24: 12/20; avisos Nav2: 54
+2026-11-15 00:28:51 FIN tarde14; resumen en RESUMEN_NOCHE14.txt
