@@ -22,6 +22,11 @@ ROLL = 1.5708                                # giro de muñeca al agarrar (rad) 
 ROLL_ACT = ROLL                              # giro usado en este agarre: ROLL + corrección por la orientación del cubo vista por la cámara
 TOL_CHOQUE = 0.15                            # rad: si al bajar alguna articulación queda más lejos que esto, la pinza chocó (con el cubo u otro): se aborta
 MARGEN, D_PROF = 0.018, 0.016                # m (barrido del 11-nov: 5/5 con 0.018 / 0.016)
+# 15-nov (paso 1 del plan del diagnóstico de fallos): SO101_MARGEN cambia el margen para un barrido; SO101_RUIDO_MM / SO101_RUIDO_DEG suman un error uniforme
+# (±mm en x e y, ±grados en el giro estimado del cubo) al objetivo del agarre para medir la tolerancia del agarre. Sin estas variables no cambia nada.
+MARGEN = float(os.environ.get('SO101_MARGEN', MARGEN))
+RUIDO_MM, RUIDO_DEG = float(os.environ.get('SO101_RUIDO_MM', '0')), float(os.environ.get('SO101_RUIDO_DEG', '0'))
+_RNG_RUIDO = random.Random(int(os.environ.get('SO101_RUIDO_SEED', '0')) or None)
 TOL_INC = 10.0                               # tolerancia de la inclinación de la pinza (grados): lo que importa es la posición; en el borde del alcance la inclinación no llega exacta
 Q_REF = (0.0, 1.10, -0.41, 0.70)             # configuración de agarre que funcionó: semilla de la IK (evita ramas distintas del brazo)
 GRIP_OPEN = 0.85                             # apertura al acercarse (rad)
@@ -151,6 +156,9 @@ def grasp_cycle(m, strat, row, q_obs, hold=False):
         row['err_est1_mm'] = round(1000 * float(np.hypot(est[0] - gt[0], est[1] - gt[1])), 1)
 
     target = est[:2].copy()
+    if RUIDO_MM > 0:                                 # experimento de tolerancia (15-nov): error de posición inyectado
+        target = target + np.array([_RNG_RUIDO.uniform(-RUIDO_MM, RUIDO_MM), _RNG_RUIDO.uniform(-RUIDO_MM, RUIDO_MM)]) / 1000.0
+        m.mark(f'ruido de posición inyectado: {1000 * (target[0] - est[0]):+.1f}, {1000 * (target[1] - est[1]):+.1f} mm')
     phi_sel = None                                   # inclinación que permite llegar al cubo (plan B si está lejos o ladeado)
     for ph in (PHI, 70.0, 60.0):
         if q_agarre(m, np.array([target[0], target[1], CUBE_SIZE / 2]), ph) is not None:
@@ -161,6 +169,8 @@ def grasp_cycle(m, strat, row, q_obs, hold=False):
     cy = getattr(m, 'last_cube_yaw', None)
     if os.environ.get('SO101_ALINEAR', '1') == '0':   # experimento: sin alinear la muñeca
         cy = None
+    if RUIDO_DEG > 0 and cy is not None:            # experimento de tolerancia (15-nov): error de giro inyectado
+        cy = cy + math.radians(_RNG_RUIDO.uniform(-RUIDO_DEG, RUIDO_DEG))
     roll = roll_alineado(m, np.array([target[0], target[1], CUBE_SIZE / 2]), phi_sel, cy)
     yr = yaw_real_rel(m)
     m.mark(f'muneca {math.degrees(roll):.0f} grados (cubo a {0 if cy is None else math.degrees(cy):.0f})')

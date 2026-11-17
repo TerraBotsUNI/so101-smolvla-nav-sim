@@ -134,6 +134,9 @@ def main():
             tx, ty = rng.uniform(0.14, 0.18), rng.uniform(-0.025, 0.025)
             otros = [c for c in SM.COLORES if c != color]; rng.shuffle(otros)
             lados = [1, -1]; rng.shuffle(lados)
+            if os.environ.get('SO101_DISPOSICION') == 'mision':   # 15-nov (diagnóstico de fallos): el pedido en cualquier posición de la fila, como en la misión
+                pos = rng.randrange(3)                              # 0: vecinos a la derecha; 1: uno a cada lado; 2: vecinos a la izquierda
+                lados = {0: [-1, -2], 1: lados, 2: [1, 2]}[pos]
             poses = {color: (tx, ty, math.radians(rng.uniform(-40, 40)))}
             for c, s in zip(otros, lados):
                 poses[c] = (rng.uniform(0.13, 0.19), ty + s * rng.uniform(0.125, 0.145), math.radians(rng.uniform(-40, 40)))

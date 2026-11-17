@@ -16,7 +16,7 @@ Convenciones:
 |---|---|---|---|---|---|---|---|---|
 | **v1** (12-nov) | 600 (300 + 300) | 457 | 85 707 | demostración (pedido en el centro) | 10 N·m | 18 mm | colector A: 1110, 1120, …; colector B: 2210, 2220, … (base 1100 / 2200 + 10·tanda, `orquestacion/vla/orquestador_escena.sh`) | `demos/lerobot_escena` |
 | v1 con la pinza reetiquetada (14-nov) | mismos 600 | 457 | 85 707 | ídem | ídem | ídem | ídem | `demos/lerobot_escena_pinzaorden` (`convertir_demos_lerobot.py --pinza-orden`) |
-| **v2** (15-nov) | 600 (300 + 300) | 590 | 108 879 | misión (`SO101_DISPOSICION=mision`) | 2 N·m | 26 mm | [COMPLETAR: semillas base de `vla/paso2_4.sh` en la WS] | `demos/lerobot_v2_mision` |
+| **v2** (15-nov) | 600 (300 + 300) | 590 | 108 879 | misión (`SO101_DISPOSICION=mision`) | 2 N·m | 26 mm | colector A: **5100**; colector B: **6200** (un solo flujo de 300 episodios por colector, sin reintentos; `orquestacion/vla/paso2_4.sh`, campo `semilla` de cada `meta.json`) | `demos/lerobot_v2_mision` |
 
 Cada episodio crudo contiene `wrist.mp4`, `scene.mp4`, `front.mp4` (256×256, 10 Hz de simulación), `estado.csv` (5 articulaciones + pinza) y `meta.json` (instrucción en inglés, color, éxito, motivo, poses de los cubos respecto al robot). La conversión (`orquestacion/vla/convertir_demos_lerobot.py`) toma solo los episodios exitosos, usa `observation.images.wrist`, `observation.images.scene`, `observation.state` (6) y `action[t] = estado[t+1]`.
 
@@ -27,7 +27,7 @@ La separación es **por semilla**: ninguna semilla de evaluación se usó para g
 | Uso | Semillas |
 |---|---|
 | Demostraciones v1 | 1110-1300 y 2210-2400 (tandas de 10 en 10) |
-| Demostraciones v2 | [COMPLETAR, ver arriba] |
+| Demostraciones v2 | 5100 (colector A) y 6200 (colector B) |
 | Banco del brazo, disposición de demostración | **900** (50 escenas) |
 | Banco del brazo, disposición de misión | **910** (50 escenas; también el barrido del margen, 30 escenas) |
 | Misiones completas (resultado final) | **21, 22, 23, 24** (20 misiones cada una) |
@@ -90,35 +90,39 @@ Todos en la estación de trabajo, en `$PROYECTO/vla/entrenos/<entreno>/checkpoin
 
 | Nombre en el artículo | Carpeta | Dataset | Pasos | Checkpoint usado | SHA-256 de `model.safetensors` |
 |---|---|---|---|---|---|
-| SmolVLA temprano | `smolvla_escena_temprano_1639` | 154 episodios (muñeca + escena) | 8 000 | `008000` | [COMPLETAR: calcular en la WS] |
-| SmolVLA 20k | `smolvla_escena_definitivo_1933` | `lerobot_escena` (457) | 20 000 | `020000` | [COMPLETAR: calcular en la WS] |
-| **SmolVLA 40k** | `smolvla_escena_40k` | `lerobot_escena` (457) | 40 000 | `040000` | [COMPLETAR: calcular en la WS] |
-| SmolVLA, pinza reetiquetada | `smolvla_pinzaorden_40k` | `lerobot_escena_pinzaorden` (457) | 40 000 | `040000` | [COMPLETAR: calcular en la WS] |
-| **SmolVLA v2** | `smolvla_v2_mision_30k` | `lerobot_v2_mision` (590) | 30 000 | `030000` | [COMPLETAR: calcular en la WS] |
-| **ACT** | `act_escena_40k` | `lerobot_escena` (457) | 40 000 (bloque 50) | `040000` | [COMPLETAR: calcular en la WS] |
+| SmolVLA temprano | `smolvla_escena_temprano_1639` | 154 episodios (muñeca + escena) | 8 000 | `008000` | `0e9d482772dcd316f316d0beccec3375a274679409e3b35abbc5d11177faea81` |
+| SmolVLA 20k | `smolvla_escena_definitivo_1933` | `lerobot_escena` (457) | 20 000 | `020000` | `ec1ff712d08ef96f54cdda55fb872a3b084d761d0e8711ae332af3feac3056a8` |
+| **SmolVLA 40k** | `smolvla_escena_40k` | `lerobot_escena` (457) | 40 000 | `040000` | `5ea4269b68e24744fb1c008ffb42ce0160194472ede602ba071ca2ff1870fc43` |
+| SmolVLA, pinza reetiquetada | `smolvla_pinzaorden_40k` | `lerobot_escena_pinzaorden` (457) | 40 000 | `040000` | `98b29938f6c09eb0beeab769a30a99ff90fce3d5065447982aef246196fe0120` |
+| **SmolVLA v2** | `smolvla_v2_mision_30k` | `lerobot_v2_mision` (590) | 30 000 | `030000` | `0b157fa15a1e93151d44f823874ef46f2f0f47887eb65d9d189e2d6175593050` |
+| **ACT** | `act_escena_40k` | `lerobot_escena` (457) | 40 000 (bloque 50) | `040000` | `0d90f1fe817f6af9056c42decc910ff7f86d2814893553ccda997c2a8d93bcbc` |
 
-Para calcularlos: `sha256sum $PROYECTO/vla/entrenos/*/checkpoints/*/pretrained_model/model.safetensors`.
+Tamaño de `model.safetensors`: 906 712 520 bytes en cada SmolVLA y 206 494 928 bytes en ACT. Cada `pretrained_model` incluye además `config.json`, `train_config.json` y los procesadores de normalización (`policy_preprocessor*`, `policy_postprocessor*`). Comprobación: `sha256sum $PROYECTO/vla/entrenos/<entreno>/checkpoints/<paso>/pretrained_model/model.safetensors` (sumas calculadas en la WS el 16-nov-2026).
 
 ## 9. Datasets y artefactos grandes (no incluidos)
 
 | Artefacto | Tamaño | Publicación propuesta |
 |---|---|---|
-| `demos/lerobot_escena` (457 episodios, 85 707 pasos) | [COMPLETAR: `du -sh` en la WS] | [COMPLETAR: p. ej. Hugging Face Datasets] |
-| `demos/lerobot_escena_pinzaorden` | [COMPLETAR] | [COMPLETAR] |
-| `demos/lerobot_v2_mision` (590 episodios, 108 879 pasos) | [COMPLETAR] | [COMPLETAR] |
-| Episodios crudos (`demos/crudas_escena_{a,b}`, `demos/crudas_v2_{a,b}`) | [COMPLETAR] | [COMPLETAR: opcional, Zenodo] |
-| Checkpoints de la sección 8 | [COMPLETAR] | [COMPLETAR: p. ej. Hugging Face Models] |
-| Grabaciones de cada intento de la política (`vla/intentos_*`) y videos de misión | [COMPLETAR] | [COMPLETAR] |
+| `demos/lerobot_escena` (457 episodios, 85 707 pasos) | 375 MiB | [COMPLETAR: p. ej. Hugging Face Datasets] |
+| `demos/lerobot_escena_pinzaorden` | 374 MiB | [COMPLETAR] |
+| `demos/lerobot_v2_mision` (590 episodios, 108 879 pasos) | 460 MiB | [COMPLETAR] |
+| Episodios crudos (`demos/crudas_escena_{a,b}`, `demos/crudas_v2_{a,b}`) | 773 MiB en total (189 + 195 MiB v1; 195 + 194 MiB v2) | [COMPLETAR: opcional, Zenodo] |
+| Checkpoints de la sección 8 | 4.5 GiB las seis carpetas `pretrained_model` | [COMPLETAR: p. ej. Hugging Face Models] |
+| Grabaciones de cada intento de la política (`vla/intentos_*`) y videos de misión | ~1.0 GiB de intentos (`intentos_mision` 336 MiB, `intentos_vla_escena` 697 MiB, `intentos_vla` 1.2 MiB) y 1.3 GiB de videos de misión | [COMPLETAR] |
 
-## 10. Pendiente de completar (archivos que solo están en la WS)
+## 10. Archivos traídos de la estación de trabajo (16-nov-2026)
 
-La copia local del código usada para preparar este repositorio no incluye estos archivos; sin ellos el paquete no compila tal cual (el `CMakeLists.txt` instala `worlds`, `maps` y `meshes`):
+Esta versión incluye todos los archivos del paquete que solo estaban en la WS, copiados de la versión usada en el artículo (los tres scripts del experto y el conversor se tomaron del respaldo `antes_v3_2026-11-16`, previo a los cambios de la tanda posterior al artículo, que no se incluye):
 
-- `ros2/paper_vla_tb3so101/launch/sim.launch.py`;
-- `ros2/paper_vla_tb3so101/worlds/` (`paper_vla_arena.sdf`, `paper_vla_arena_vistas.sdf`, `paper_vla_empty.sdf`) y `maps/paper_vla_arena.{yaml,pgm}`;
-- `ros2/paper_vla_tb3so101/meshes/so101/*.stl` (de TheRobotStudio/SO-ARM100);
-- `ros2/paper_vla_tb3so101/config/nav2_mppi.yaml`, `nav2_dwb.yaml`, `nav2_rpp.yaml` (Tabla IX) y `controllers.yaml`;
-- `ros2/paper_vla_tb3so101/scripts/nav_trial.py`, `make_nav2_params.py`, `autotune.py`, `plot_trial.py`, `verificar_fk.py` y el orquestador de la comparación de navegación del 16-nov;
-- `orquestacion/vla/servidor_politica_gen.py`, `evaluar_gen.sh`, `evaluar_semilla.sh`, `paso1_margen.sh`, `paso2_4.sh`, `madrugada15.sh`, `manana15_experto26.sh`, `tarde15_act.sh`;
-- `ros_env.sh` real (en `orquestacion/ros_env.sh` hay una reconstrucción a partir de la documentación);
-- dependencia `third_party/turtlebot3_manipulation` (ROBOTIS; puede clonarse del repositorio oficial).
+- `ros2/paper_vla_tb3so101/launch/sim.launch.py`, `worlds/` (`paper_vla_arena.sdf`, `paper_vla_arena_vistas.sdf`, `paper_vla_empty.sdf`), `maps/paper_vla_arena.{yaml,pgm}` y `urdf/colores.xacro`;
+- `ros2/paper_vla_tb3so101/meshes/so101/*.stl` (18 mallas de TheRobotStudio/SO-ARM100, 19 MiB; el URDF usa 13);
+- `ros2/paper_vla_tb3so101/config/nav2_mppi.yaml`, `nav2_dwb.yaml`, `nav2_rpp.yaml` (generados por `scripts/make_nav2_params.py`) y `controllers.yaml`;
+- `ros2/paper_vla_tb3so101/scripts/nav_trial.py`, `make_nav2_params.py`, `autotune.py`, `plot_trial.py` y `verificar_fk.py`;
+- versiones del 15-nov de `so101_demos.py` (`SO101_DISPOSICION=mision`), `so101_eval_brazo.py` (`--disposicion`), `so101_trial.py` (`SO101_MARGEN`, `SO101_RUIDO_MM`, `SO101_RUIDO_DEG`), `config/arena.yaml` (cubos separados 0.13 m) y `CMakeLists.txt` (instala `so101_vla.py` y `so101_eval_brazo.py`);
+- comparación de navegación (Tabla IX): `orquestacion/vla/madrugada16_nav.sh`, `nav_batch_so101.sh`, `prueba_nav_so101.sh` y `nav_so101/nav2_so101_{mppi,dwb,rpp}.yaml` (= `nav2_mision.yaml` salvo el bloque `controller_server`, con los parámetros por defecto de cada controlador);
+- `orquestacion/vla/servidor_politica_gen.py`, `evaluar_gen.sh`, `evaluar_semilla.sh`, `paso1_margen.sh`, `paso2_4.sh`, `madrugada15.sh`, `madrugada_act.sh`, `manana15_experto26.sh`, `tarde15_act.sh`, `noche15.sh` y la versión con `--pinza-orden` de `convertir_demos_lerobot.py`;
+- `orquestacion/ros_env.sh`: el original de la WS (sustituye a la reconstrucción anterior).
+
+En todos se sustituyó la ruta del proyecto por `${PROYECTO:-$HOME/proyecto/paper_rover_vla_2025}` (o `~/proyecto/...` en comentarios) y los identificadores de Hugging Face por `local/...`; no hay otros cambios.
+
+Sigue fuera del repositorio la dependencia `turtlebot3_manipulation` (ROBOTIS, Apache-2.0): clonar el repositorio oficial (versión para ROS 2 Humble) en el mismo workspace de `colcon`, porque el URDF incluye `$(find turtlebot3_manipulation_description)/urdf/turtlebot3_waffle_pi.urdf.xacro`.

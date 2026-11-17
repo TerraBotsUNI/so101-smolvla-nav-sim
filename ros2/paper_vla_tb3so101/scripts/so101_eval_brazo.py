@@ -22,6 +22,21 @@ COLORES = {'rojo': 'cubo_rojo', 'verde': 'pick_object', 'azul': 'cubo_azul'}
 CAMPOS = ['escena', 'semilla', 'color', 'estrategia', 'exito', 'mensaje', 'cubo_z', 'duracion_s', 'ms_inferencia', 'cubos']
 
 
+def escena_mision(rng):
+    """Disposición de la misión (15-nov): los 3 cubos en fila separados ~13 cm y el pedido en la posición 0, 1 o 2 de la fila (no siempre en el centro).
+    El pedido queda delante (como tras ACERCAR) y los otros dos a un lado o a ambos. Mismos rangos de distancia y giro que escena()."""
+    color = rng.choice(list(COLORES)); otros = [c for c in COLORES if c != color]; rng.shuffle(otros)
+    tx, ty = rng.uniform(0.14, 0.18), rng.uniform(-0.025, 0.025)
+    pos = rng.randrange(3)                                  # 0: vecinos a la derecha (y<0); 1: uno a cada lado; 2: vecinos a la izquierda (y>0)
+    lados = {0: [-1, -2], 1: [1, -1], 2: [1, 2]}[pos]
+    if pos == 1:
+        rng.shuffle(lados)
+    poses = {color: (tx, ty, math.radians(rng.uniform(-40, 40)))}
+    for c, k in zip(otros, lados):
+        poses[c] = (rng.uniform(0.13, 0.19), ty + k * rng.uniform(0.125, 0.145), math.radians(rng.uniform(-40, 40)))
+    return color, poses
+
+
 def escena(rng):
     color = rng.choice(list(COLORES)); otros = [c for c in COLORES if c != color]; rng.shuffle(otros)
     tx, ty = rng.uniform(0.14, 0.18), rng.uniform(-0.025, 0.025)
@@ -35,6 +50,7 @@ def escena(rng):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--n', type=int, default=10); ap.add_argument('--seed', type=int, default=900)
+    ap.add_argument('--disposicion', default=os.environ.get('SO101_DISPOSICION', 'demo'), choices=['demo', 'mision'], help='demo: pedido siempre al centro (como las demostraciones); mision: pedido en cualquier posición de la fila')
     ap.add_argument('--estrategias', default='vla,ik_directa'); ap.add_argument('--out', default='eval_brazo.csv')
     ap.add_argument('--desde', type=int, default=0, help='reanudar: salta las primeras k escenas (las genera igual para conservar la secuencia)')
     a = ap.parse_args()
@@ -69,7 +85,7 @@ def main():
         if nuevo:
             w.writeheader()
         for i in range(a.n):
-            color, poses = escena(rng)
+            color, poses = (escena_mision if a.disposicion == 'mision' else escena)(rng)
             if i < a.desde:
                 continue
             for est in a.estrategias.split(','):

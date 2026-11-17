@@ -7,7 +7,9 @@ Las configuraciones viven dentro del paquete ROS (`ros2/paper_vla_tb3so101/`), p
 | Archivo | Uso |
 |---|---|
 | `ros2/paper_vla_tb3so101/config/nav2_mision.yaml` | Nav2 de la misión: AMCL (configuración A2: alpha1 0.4, alpha2 0.3, alpha3-5 0.1, recovery_alpha_fast 0.1, slow 0.001), SmacPlanner2D y MPPI; footprint con la lengüeta del brazo hasta 0.22 m |
-| `nav2_mppi.yaml`, `nav2_dwb.yaml`, `nav2_rpp.yaml` | comparación de controladores (Tabla IX, parámetros por defecto). [COMPLETAR: copiar desde la WS a `ros2/paper_vla_tb3so101/config/`] |
+| `ros2/paper_vla_tb3so101/config/nav2_mppi.yaml`, `nav2_dwb.yaml`, `nav2_rpp.yaml` | un controlador cada uno con parámetros por defecto (generados por `scripts/make_nav2_params.py`); base para `controller:=mppi|dwb|rpp` |
+| `orquestacion/vla/nav_so101/nav2_so101_{mppi,dwb,rpp}.yaml` | **los usados en la Tabla IX**: idénticos a `nav2_mision.yaml` (AMCL, mapas de costos, contorno con el brazo) salvo el bloque `controller_server`, tomado de los anteriores; se pasan con `params_file:=` desde `orquestacion/vla/nav_batch_so101.sh` |
+| `ros2/paper_vla_tb3so101/config/controllers.yaml` | controladores de `ros2_control` (base, brazo y pinza) |
 | `ros2/paper_vla_tb3so101/config/bridge.yaml` | puente ROS-Gazebo (incluye `/scene_camera/image_raw`) |
 | `ros2/paper_vla_tb3so101/config/arena.yaml`, `ubicaciones.yaml` | arena (genera mundo y mapa con `make_arena.py`) y poses de recojo y entrega |
 

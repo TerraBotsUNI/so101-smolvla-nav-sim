@@ -43,7 +43,7 @@ orquestacion/
   vla/                    servidor de la política, conversión a LeRobotDataset, ajuste, evaluación, misiones y orquestadores nocturnos
   ablacion_cobertura/     ablación de cobertura de datos (preparada; no forma parte de los resultados del artículo)
   banco_pinza/            banco grabado de la pinza a 10 frente a 2 N·m
-  ros_env.sh              entorno ROS de ejemplo (reconstruido; ver nota)
+  ros_env.sh              entorno ROS usado en la estación de trabajo (ruta del proyecto en PROYECTO)
 config/                   índice de configuraciones (Nav2, URDF) y parche del overlay de la pinza a 10 N·m
 datos/                    CSV de todas las tandas (11-12nov, 14nov, 15nov, 16nov)
 analisis/                 scripts que recalculan las cifras del artículo (Wilson, McNemar exacto y mid-p, Fisher, Newcombe, permutación)
@@ -149,7 +149,7 @@ Navegación con los parámetros por defecto (meta a (2.0, 1.5) m, 30 ensayos por
 - Los cubos quedan por debajo del plano del LiDAR y no están en el mapa de costos.
 - El experto centra el objetivo antes del agarre, así que no se evalúa la comprensión del lenguaje.
 - La localización y el control solo usan sensores simulados (LiDAR, odometría, cámaras); la verdad de terreno de Gazebo solo se usa para medir.
-- Faltan en este repositorio algunos archivos que solo están en la estación de trabajo (mundos, mapas, mallas, YAML de MPPI/DWB/RPP, algunos orquestadores); la lista está en `MANIFIESTO.md`, sección «Pendiente de completar».
+- La dependencia `turtlebot3_manipulation` (ROBOTIS) no se incluye: se clona del repositorio oficial (ver `MANIFIESTO.md`, sección 10). Los datasets, checkpoints y videos se publican aparte (secciones 8 y 9).
 
 ## Licencias
 

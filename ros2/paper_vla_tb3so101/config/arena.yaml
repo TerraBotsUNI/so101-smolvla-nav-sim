@@ -18,7 +18,7 @@ goal: {x: 2.0, y: 1.5, yaw: 0.0}
 pick_object: {x: 2.16, y: 1.5, size: 0.040, mass: 0.040}   # cubo verde de 4 cm (hueco máx. de la pinza del OM-X = 56 mm), 0.6 m delante de la meta de navegación
 mision:            # v2: ver config/ubicaciones.yaml (el plato está 0.16 m delante de `entrega`)
   plato: {x: 2.16, y: -1.5, radius: 0.10}
-cubos:             # v2: tres cubos de 4 cm en la zona de recojo (0.16 m delante de `recojo`), separados 0.10 m; la misión los baraja
-  - {name: cubo_rojo,  color: rojo,  rgb: [0.85, 0.1, 0.1], x: 2.16, y: 1.60}
+cubos:             # v2: tres cubos de 4 cm en la zona de recojo (0.16 m delante de `recojo`), separados 0.13 m; la misión los baraja
+  - {name: cubo_rojo,  color: rojo,  rgb: [0.85, 0.1, 0.1], x: 2.16, y: 1.63}
   - {name: pick_object, color: verde, rgb: [0.1, 0.85, 0.1], x: 2.16, y: 1.50}
-  - {name: cubo_azul,  color: azul,  rgb: [0.1, 0.2, 0.9], x: 2.16, y: 1.40}
+  - {name: cubo_azul,  color: azul,  rgb: [0.1, 0.2, 0.9], x: 2.16, y: 1.37}
