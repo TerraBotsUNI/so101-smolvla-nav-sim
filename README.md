@@ -10,12 +10,27 @@ Filiaciones: Facultad de Ingeniería Eléctrica y Electrónica (Rojas-Villanueva
 
 Un TurtleBot3 Waffle Pi con un brazo SO-101 en Gazebo Fortress (ROS 2 Humble). En la misión se pide un cubo por color (rojo, verde o azul): Nav2 (AMCL + SmacPlanner2D + MPPI) lleva la base a la zona de recojo, el brazo recoge el cubo y la base lo lleva a la zona de entrega, donde se deja en un plato. El agarre lo hace una de dos políticas intercambiables detrás de la misma acción ROS `Pick`:
 
-- **experto clásico** (`ik_directa`): detección por color con la cámara de muñeca, cinemática inversa y agarre programado a mano; también genera las demostraciones;
+- **experto clásico** (`ik_directa`): detección por color con la cámara de muñeca, cinemática inversa y agarre programado explícitamente; también genera las demostraciones;
 - **política aprendida**: SmolVLA (`lerobot/smolvla_base` ajustado) o ACT, servidas por un proceso Python 3.12 aparte (LeRobot) por un socket TCP local.
 
 Además se comparan los controladores locales de Nav2 (MPPI, DWB y RPP) con el mismo robot.
 
 **Todo es simulación.** No hay ensayos con el robot físico.
+
+![TurtleBot3 Waffle Pi con el brazo SO-101 en tres momentos del agarre](docs/img/robot_so101.png)
+*TurtleBot3 Waffle Pi con el brazo SO-101 en Gazebo, en tres momentos del agarre.*
+
+![Arena de Gazebo vista desde arriba](docs/img/arena_gazebo.png)
+*Arena de la misión: cilindros fijos, fila de tres cubos y plato de entrega.*
+
+![Arquitectura del sistema](docs/img/arquitectura.png)
+*Arquitectura: máquina de estados de la misión, nodos de ROS 2 y servidor de la política (Python 3.12) conectado por TCP.*
+
+![Cámaras de muñeca y de escena durante un episodio](docs/img/camaras_muneca_y_escena.jpg)
+*Las dos cámaras que recibe la política: muñeca y escena (mástil), a lo largo de un episodio de demostración.*
+
+![SmolVLA y flow matching](docs/img/smolvla_flow_matching.png)
+*SmolVLA: el modelo visión-lenguaje procesa imágenes, estado e instrucción y el experto de acciones genera un bloque de acciones por flow matching.*
 
 ## Requisitos
 
@@ -123,6 +138,17 @@ Bancos de agarre pareados (50 escenas, misma escena para cada política; pinza a
 | SmolVLA 40k (457 demostraciones) | 36/50 (72 %) | 29/50 (58 %); 3/18 con el cubo a la derecha |
 | ACT 40k (457 demostraciones) | 33/50 (66 %) | 27/50 (54 %); 2/18 a la derecha |
 | SmolVLA v2 30k (590 demostraciones con disposición de misión) | 47/50 (94 %) | 49/50 (98 %) |
+| SmolVLA v3 60k (1966 demostraciones variadas, control) | 47/50 (94 %) | 47/50 (94 %) |
+
+En el banco s920 (llegada variada) SmolVLA v3, SmolVLA v2 y el experto con 26 mm acertaron 47/50, 46/50 y 50/50; la v3 no se distingue de la v2 (McNemar p ≥ 0.625) y no se evaluó en misiones completas (`datos/18nov/v3_variada/`).
+
+![Éxito de agarre por banco](docs/img/agarre_bancos_v3.png)
+
+![Recogida por posición del cubo y margen del agarre](docs/img/agarre_por_posicion_y_margen.png)
+*Recogida según la posición del cubo en la fila y el margen lateral del experto (figura del artículo).*
+
+![Geometría del agarre](docs/img/geometria_agarre.png)
+*Geometría del agarre: mordaza fija y móvil; los fallos a la derecha se asocian a un error lateral hacia la mordaza fija.*
 
 Misiones completas, semillas 21-24 (80 misiones por política, mismas misiones para todas):
 
@@ -134,7 +160,7 @@ Misiones completas, semillas 21-24 (80 misiones por política, mismas misiones p
 | Experto, 26 mm | 57/80 (71 %) | 61-80 % | 57/70 (12 cubos caídos en el transporte) |
 | SmolVLA v2 | 59/80 (74 %) | 63-82 % | 59/69 |
 
-Navegación con los parámetros por defecto (meta a (2.0, 1.5) m, 30 ensayos por controlador con simulación nueva; éxito = llegada informada y error planar real ≤ 0.30 m):
+Navegación con los parámetros por defecto (meta a (2.0, 1.5) m, 30 ensayos planificados por controlador, cada uno con simulación nueva; válidos: 30, 28 y 29; éxito = llegada informada y error planar real ≤ 0.30 m):
 
 | Controlador | Éxito | Tiempo (s) | Error final (m) | Holgura mínima (m) |
 |---|---|---|---|---|
