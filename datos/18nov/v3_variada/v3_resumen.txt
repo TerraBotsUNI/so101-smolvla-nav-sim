@@ -1,0 +1,24 @@
+Tanda v3: éxito del agarre (primer y único intento; pinza 2 N·m; IC de Wilson 95 %)
+
+== Banco s910 (misión)
+  v3: total 47/50 (84-98 %) | izquierda 13/14 (69-99 %); centro 17/18 (74-99 %); derecha 17/18 (74-99 %)
+  v2: total 49/50 (90-100 %) | izquierda 14/14 (78-100 %); centro 18/18 (82-100 %); derecha 17/18 (74-99 %)
+  experto 26 mm: total 48/50 (87-99 %) | izquierda 13/14 (69-99 %); centro 17/18 (74-99 %); derecha 18/18 (82-100 %)
+  40k: total 29/50 (44-71 %) | izquierda 13/14 (69-99 %); centro 13/18 (49-88 %); derecha 3/18 (6-39 %)
+  McNemar v3 frente a v2: 1 escenas solo v3 / 3 solo v2; p exacto = 0.625, mid-p = 0.375
+  McNemar v3 frente a experto 26 mm: 1 escenas solo v3 / 2 solo experto 26 mm; p exacto = 1, mid-p = 0.625
+  McNemar v3 frente a 40k: 19 escenas solo v3 / 1 solo 40k; p exacto = 4.01e-05, mid-p = 2.1e-05
+
+== Banco s900 (demo)
+  v3: total 47/50 (84-98 %) | centro 47/50 (84-98 %)
+  v2: total 47/50 (84-98 %) | centro 47/50 (84-98 %)
+  experto 26 mm: total 49/50 (90-100 %) | centro 49/50 (90-100 %)
+  McNemar v3 frente a v2: 2 escenas solo v3 / 2 solo v2; p exacto = 1, mid-p = 1
+  McNemar v3 frente a experto 26 mm: 1 escenas solo v3 / 3 solo experto 26 mm; p exacto = 0.625, mid-p = 0.375
+
+== Banco s920 (variada)
+  v3: total 47/50 (84-98 %) | izquierda 15/18 (61-94 %); centro 10/10 (72-100 %); derecha 17/17 (82-100 %); solo 5/5 (57-100 %)
+  v2: total 46/50 (81-97 %) | izquierda 16/18 (67-97 %); centro 10/10 (72-100 %); derecha 15/17 (66-97 %); solo 5/5 (57-100 %)
+  experto 26 mm: total 50/50 (93-100 %) | izquierda 18/18 (82-100 %); centro 10/10 (72-100 %); derecha 17/17 (82-100 %); solo 5/5 (57-100 %)
+  McNemar v3 frente a v2: 3 escenas solo v3 / 2 solo v2; p exacto = 1, mid-p = 0.688
+  McNemar v3 frente a experto 26 mm: 0 escenas solo v3 / 3 solo experto 26 mm; p exacto = 0.25, mid-p = 0.125

@@ -2,7 +2,7 @@
 
 Repositorio de código, configuraciones y datos del artículo:
 
-> U. Rojas-Villanueva, P. Echevarria-Duran, V. Ventura-Condo, J. Rafael-Rafael y J. Quispe-Navarrete, «Navegación autónoma y manipulación móvil con SmolVLA y SO-101 en simulación» (*Autonomous Navigation and Mobile Manipulation with SmolVLA and SO-101 in Simulation*), *TECNIA*, Universidad Nacional de Ingeniería, Lima, Perú, 2026. [COMPLETAR: volumen, número, páginas y DOI cuando se publique.]
+> U. Rojas-Villanueva, P. Echevarria-Duran, V. Ventura-Condo, J. Rafael-Rafael y J. Quispe-Navarrete, «Navegación autónoma y manipulación móvil con SmolVLA y SO-101 en simulación» (*Autonomous Navigation and Mobile Manipulation with SmolVLA and SO-101 in Simulation*), *TECNIA*, Universidad Nacional de Ingeniería, Lima, Perú, 2026. Manuscrito en revisión en *TECNIA* (versión corregida, v25, enviada el 24-nov-2026); volumen, número, páginas y DOI se añadirán si se publica.
 
 Filiaciones: Facultad de Ingeniería Eléctrica y Electrónica (Rojas-Villanueva, Echevarria-Duran), Facultad de Ciencias (Ventura-Condo, Quispe-Navarrete) y Facultad de Ingeniería Mecánica (Rafael-Rafael), Universidad Nacional de Ingeniería.
 
@@ -65,17 +65,18 @@ python navegacion/analizar_nav.py ../datos/16nov/navegacion_so101 > salidas/resu
 
 `resultados_v13.py` ejecuta en cadena `resultados_v10.py` → `resultados_v9.py` → `resultados_v8.py` (cada uno reutiliza el cálculo del anterior sin escribir sus salidas) y deja todas las cifras en `res_v13.json`, con claves del tipo `@@clave@@` que el generador del manuscrito sustituye en el texto. Se comprobó que el `res_v13.json` obtenido en este repositorio es idéntico (401 claves) al usado para el manuscrito v17, y que `analizar_nav.py` reproduce exactamente `datos/16nov/navegacion_so101/resumen_nav_so101.json`.
 
-| Elemento del artículo (v17) | Origen | Claves / archivo |
+| Elemento del artículo (v25) | Origen | Claves / archivo |
 |---|---|---|
 | Bancos de agarre s900 y s910 (éxito, IC de Wilson, McNemar exacto y mid-p por escena pareada, éxito por posición del cubo) | `datos/16nov/eval_brazo_*.csv` | `bk_*`, `mc_*` |
-| Tabla VII: misiones de las semillas 21-24 por etapa y política | `datos/14nov/final_misiones_vlapo40k_*`, `datos/16nov/final_misiones_*` | `mf_tabla`, `mf_*`, `pm_*`, `pmnav_*`, `pmcaida_*` |
-| Tabla VIII: resumen por política (bancos y misión) | ídem | `bk_*`, `mf_*` |
-| Tabla IX: navegación MPPI / DWB / RPP | `datos/16nov/navegacion_so101/nav_so101_*.csv` y `.txt` | `resumen_nav_so101.json` (permutación con 20 000 remuestreos, semilla 1) |
+| Tabla IV: misiones de las semillas 21-24 por etapa y política | `datos/14nov/final_misiones_vlapo40k_*`, `datos/16nov/final_misiones_*` | `mf_tabla`, `mf_*`, `pm_*`, `pmnav_*`, `pmcaida_*` |
+| Tabla III: resumen por política (bancos y misión) | ídem | `bk_*`, `mf_*` |
+| Tabla V: navegación MPPI / DWB / RPP | `datos/16nov/navegacion_so101/nav_so101_*.csv` y `.txt` | `resumen_nav_so101.json` (permutación con 20 000 remuestreos, semilla 1) |
 | Carga de CPU frente a fallos de navegación (Spearman) | `datos/16nov/ESTADO_NOCHE15.txt` | `cpu_*` |
 | Barrido del margen del experto (18/22/26/30 mm) | `datos/15nov/paso1_experto_m*_mision_s910.csv` | claves de la v9 en `res_v13.json`; figura, panel (c) |
 | Ablación de acciones por inferencia (25/15/10) | `datos/15nov/eval_brazo_A7e2_40k_nacc*_n50_s900.csv` | claves de la v9 |
 | Figura de recogida por posición y margen | todo lo anterior | `salidas/fig_v2_posicion_margen_v13.png` |
 | Error lateral hacia la mordaza fija (lado derecho) | `datos/16nov/analisis_derecha/` | `analisis/analisis_derecha/` (necesita las trayectorias crudas; ver `MANIFIESTO.md`) |
+| Control SmolVLA v3 (1966 demostraciones variadas, 60 000 pasos): bancos s900, s910 y s920, y recursos de cómputo | `datos/18nov/v3_variada/eval_*.csv`, `consumo_*.csv` | `RESULTADOS_V3.md` (47/50 en los tres bancos; sin diferencia con la v2; no evaluada en misiones completas) |
 | Banco de la pinza 10 frente a 2 N·m | `datos/16nov/banco_pinza_10_vs_2Nm/` | `RESUMEN.txt`, `casos/*/traza.csv` |
 
 Las cifras de la cadena histórica de la v8-v10 (SmolVLA 20k/40k con la pinza a 10 N·m, pinza reetiquetada, primeras misiones) salen de `datos/14nov/`; las tandas excluidas por carga de CPU están en `datos/14nov/afectadas_carga_14nov/` con su `LEEME.txt` y **no** entran en ningún cálculo.
@@ -157,7 +158,6 @@ Navegación con los parámetros por defecto (meta a (2.0, 1.5) m, 30 ensayos por
 - **Datos** (`datos/`) y **documentación** (`README.md`, `MANIFIESTO.md`, `docs/`): Creative Commons Attribution 4.0 International (`LICENSE-DATOS`).
 - Los componentes de terceros (URDF y mallas del SO-101, `turtlebot3_manipulation`, `lerobot/smolvla_base`) conservan sus licencias originales.
 
-[COMPLETAR: los autores confirman la licencia antes de publicar.]
 
 ## Cómo citar
 
@@ -167,7 +167,7 @@ Navegación con los parámetros por defecto (meta a (2.0, 1.5) m, 30 ensayos por
   title   = {Navegación autónoma y manipulación móvil con SmolVLA y SO-101 en simulación},
   journal = {TECNIA},
   year    = {2026},
-  note    = {[COMPLETAR: volumen, número, páginas, DOI]}
+  note    = {Manuscrito en revisión}
 }
 ```
 
