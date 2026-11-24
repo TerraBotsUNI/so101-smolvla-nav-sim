@@ -26,8 +26,9 @@ La separación es **por semilla**: ninguna semilla de evaluación se usó para g
 
 | Uso | Semillas |
 |---|---|
-| Demostraciones v1 | 1110-1300 y 2210-2400 (tandas de 10 en 10) |
+| Demostraciones v1 | colector A desde 1110 y colector B desde 2210, en tandas de 10 en 10 (reservadas 1110-1300 y 2210-2400; las usadas quedan entre 1110 y 2250, como dice el artículo) |
 | Demostraciones v2 | 5100 (colector A) y 6200 (colector B) |
+| Demostraciones v3 | 93000-93010, 94000-94010 y 95000-95010 (tres colectores, dos tandas cada uno) |
 | Banco del brazo, disposición de demostración | **900** (50 escenas) |
 | Banco del brazo, disposición de misión | **910** (50 escenas; también el barrido del margen, 30 escenas) |
 | Misiones completas (resultado final) | **21, 22, 23, 24** (20 misiones cada una) |
@@ -95,6 +96,7 @@ Todos en la estación de trabajo, en `$PROYECTO/vla/entrenos/<entreno>/checkpoin
 | **SmolVLA 40k** | `smolvla_escena_40k` | `lerobot_escena` (457) | 40 000 | `040000` | `5ea4269b68e24744fb1c008ffb42ce0160194472ede602ba071ca2ff1870fc43` |
 | SmolVLA, pinza reetiquetada | `smolvla_pinzaorden_40k` | `lerobot_escena_pinzaorden` (457) | 40 000 | `040000` | `98b29938f6c09eb0beeab769a30a99ff90fce3d5065447982aef246196fe0120` |
 | **SmolVLA v2** | `smolvla_v2_mision_30k` | `lerobot_v2_mision` (590) | 30 000 | `030000` | `0b157fa15a1e93151d44f823874ef46f2f0f47887eb65d9d189e2d6175593050` |
+| **SmolVLA v3** (control, 18-nov) | `smolvla_v3_variada_60k` | `lerobot_v3_variada` (1966 episodios, 425 943 pasos; perturbaciones DART) | 60 000 | `060000` | `64549ebe5cbf1f3d9674e0717577dd2c3758ff578c51a30509e5d4cb8937ceac` |
 | **ACT** | `act_escena_40k` | `lerobot_escena` (457) | 40 000 (bloque 50) | `040000` | `0d90f1fe817f6af9056c42decc910ff7f86d2814893553ccda997c2a8d93bcbc` |
 
 Tamaño de `model.safetensors`: 906 712 520 bytes en cada SmolVLA y 206 494 928 bytes en ACT. Cada `pretrained_model` incluye además `config.json`, `train_config.json` y los procesadores de normalización (`policy_preprocessor*`, `policy_postprocessor*`). Comprobación: `sha256sum $PROYECTO/vla/entrenos/<entreno>/checkpoints/<paso>/pretrained_model/model.safetensors` (sumas calculadas en la WS el 16-nov-2026).
@@ -103,12 +105,13 @@ Tamaño de `model.safetensors`: 906 712 520 bytes en cada SmolVLA y 206 494 928 
 
 | Artefacto | Tamaño | Publicación propuesta |
 |---|---|---|
-| `demos/lerobot_escena` (457 episodios, 85 707 pasos) | 375 MiB | [COMPLETAR: p. ej. Hugging Face Datasets] |
-| `demos/lerobot_escena_pinzaorden` | 374 MiB | [COMPLETAR] |
-| `demos/lerobot_v2_mision` (590 episodios, 108 879 pasos) | 460 MiB | [COMPLETAR] |
-| Episodios crudos (`demos/crudas_escena_{a,b}`, `demos/crudas_v2_{a,b}`) | 773 MiB en total (189 + 195 MiB v1; 195 + 194 MiB v2) | [COMPLETAR: opcional, Zenodo] |
-| Checkpoints de la sección 8 | 4.5 GiB las seis carpetas `pretrained_model` | [COMPLETAR: p. ej. Hugging Face Models] |
-| Grabaciones de cada intento de la política (`vla/intentos_*`) y videos de misión | ~1.0 GiB de intentos (`intentos_mision` 336 MiB, `intentos_vla_escena` 697 MiB, `intentos_vla` 1.2 MiB) y 1.3 GiB de videos de misión | [COMPLETAR] |
+| `demos/lerobot_escena` (457 episodios, 85 707 pasos) | 375 MiB | No publicado; disponible a solicitud |
+| `demos/lerobot_escena_pinzaorden` | 374 MiB | No publicado; disponible a solicitud |
+| `demos/lerobot_v2_mision` (590 episodios, 108 879 pasos) | 460 MiB | No publicado; disponible a solicitud |
+| `demos/lerobot_v3_variada` (1966 episodios, 425 943 pasos) | no medido | No publicado; disponible a solicitud |
+| Episodios crudos (`demos/crudas_escena_{a,b}`, `demos/crudas_v2_{a,b}`) | 773 MiB en total (189 + 195 MiB v1; 195 + 194 MiB v2) | No publicado; disponible a solicitud |
+| Checkpoints de la sección 8 | ~5.4 GiB las siete carpetas `pretrained_model` | No publicados; sus SHA-256 están en la sección 8 y se entregan a solicitud |
+| Grabaciones de cada intento de la política (`vla/intentos_*`) y videos de misión | ~1.0 GiB de intentos (`intentos_mision` 336 MiB, `intentos_vla_escena` 697 MiB, `intentos_vla` 1.2 MiB) y 1.3 GiB de videos de misión | No publicado; disponible a solicitud |
 
 ## 10. Archivos traídos de la estación de trabajo (16-nov-2026)
 
